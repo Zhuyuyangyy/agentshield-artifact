@@ -1,0 +1,6 @@
+{
+  "experiment": "authorization_invariant_matrix",
+  "manifest_sha256": "12959f5a8da28297eaf0ba36e4c7b1f7b77d97b51398b612ff30b77c1ac041e6",
+  "matrix_sha256": "0457fed1f070fc4112015509232c7d2b128a14e005f36d7a019fee211f22128e",
+  "hash_encoding": "sha256 over LF-normalised content"
+}

@@ -1,0 +1,6 @@
+{
+  "experiment": "statistical_hardening",
+  "manifest_sha256": "ed9c723c1850ee12e4d73ca4cd24b6f349f61cf0f3d0ccdad495af83d390f65e",
+  "hardening_sha256": "5ed16263a78a28ef5da039c6106e2b25903aa7e8abea2f11886f5a9796e0f9c6",
+  "hash_encoding": "sha256 over LF-normalised content"
+}
