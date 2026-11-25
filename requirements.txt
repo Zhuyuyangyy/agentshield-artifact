@@ -1,0 +1,22 @@
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.6
+pydantic>=2.10.0
+loguru>=0.7.3
+httpx>=0.28.1
+pytest>=8.0.0
+slowapi>=0.1.9
+numpy>=1.26.0
+
+# ── Optional / test-only dependencies (not required to run the service) ──────
+# The observability exporter (backend/app/observability/otel.py) imports these
+# lazily only when OTel is enabled:
+#   opentelemetry-sdk
+#   opentelemetry-exporter-otlp-proto-grpc
+#
+# The live-agent benchmark (benchmark/live_agent_governance.py) uses:
+#   litellm
+#
+# Test/benchmark harnesses additionally need (see requirements-test.txt):
+#   pyarrow>=14.0
+#   datasets>=2.14.0
+#   anyio, pytest-anyio

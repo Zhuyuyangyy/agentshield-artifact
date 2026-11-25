@@ -1,0 +1,337 @@
+{
+ "experiment": "E04 joint design and sampling uncertainty",
+ "inputs": {
+  "envelope": "experiments/sensitivity/results/envelope.json",
+  "clustered": "experiments/statistics/results/clustered_bootstrap.json",
+  "outcomes": "benchmark/results/e2b_trajectory_outcomes.jsonl"
+ },
+ "rule": "A strict uniform-dominance claim requires (i) a one-sign design envelope that excludes zero, (ii) every configuration's paired cell interval excluding zero, and (iii) the clustered census intervals excluding zero. Any failure downgrades the verdict.",
+ "contrasts": {
+  "band_minus_hard|attack_trace_block_rate": {
+   "metric": "attack_trace_block_rate",
+   "design_envelope": {
+    "min": {
+     "config": "full|log_and_allow",
+     "difference_pp": 0.0
+    },
+    "max": {
+     "config": "published_prefix|block",
+     "difference_pp": 0.0
+    },
+    "span_pp": 0.0,
+    "sign": "tie"
+   },
+   "configurations": [
+    {
+     "frame": "full",
+     "semantics": "log_and_allow",
+     "point_pp": 0.0,
+     "cell_ci95": [
+      0.0,
+      0.0
+     ],
+     "excludes_zero": false
+    },
+    {
+     "frame": "prefix_400",
+     "semantics": "log_and_allow",
+     "point_pp": 0.0,
+     "cell_ci95": [
+      0.0,
+      0.0
+     ],
+     "excludes_zero": false
+    },
+    {
+     "frame": "full",
+     "semantics": "block",
+     "point_pp": 0.0,
+     "cell_ci95": [
+      0.0,
+      0.0
+     ],
+     "excludes_zero": false
+    },
+    {
+     "frame": "prefix_400",
+     "semantics": "block",
+     "point_pp": 0.0,
+     "cell_ci95": [
+      0.0,
+      0.0
+     ],
+     "excludes_zero": false
+    }
+   ],
+   "clustered_census": {
+    "point_pp": 0.0,
+    "intervals": {
+     "cell_ci95": [
+      0.0,
+      0.0
+     ],
+     "user_cluster_ci95": [
+      0.0,
+      0.0
+     ],
+     "injection_cluster_ci95": [
+      0.0,
+      0.0
+     ],
+     "twoway_ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "excludes_zero": {
+     "cell_ci95": false,
+     "user_cluster_ci95": false,
+     "injection_cluster_ci95": false,
+     "twoway_ci95": false
+    },
+    "all_exclude_zero": false
+   },
+   "verdict": "set_identity",
+   "reason": "The two rules block identical trace sets at every configuration.",
+   "uniform_dominance_licensed": false
+  },
+  "band_minus_hard|benign_trace_block_rate": {
+   "metric": "benign_trace_block_rate",
+   "design_envelope": {
+    "min": {
+     "config": "full|log_and_allow",
+     "difference_pp": 0.0
+    },
+    "max": {
+     "config": "published_prefix|block",
+     "difference_pp": 3.093
+    },
+    "span_pp": 3.093,
+    "sign": "nonnegative"
+   },
+   "configurations": [
+    {
+     "frame": "full",
+     "semantics": "log_and_allow",
+     "point_pp": 0.0,
+     "cell_ci95": [
+      0.0,
+      0.0
+     ],
+     "excludes_zero": false
+    },
+    {
+     "frame": "full",
+     "semantics": "block",
+     "point_pp": 3.0928,
+     "cell_ci95": [
+      0.0,
+      7.2165
+     ],
+     "excludes_zero": false
+    }
+   ],
+   "clustered_census": {
+    "point_pp": 3.0928,
+    "intervals": {
+     "cell_ci95": [
+      0.0,
+      7.2165
+     ],
+     "user_cluster_ci95": [
+      0.0,
+      7.2165
+     ]
+    },
+    "excludes_zero": {
+     "cell_ci95": false,
+     "user_cluster_ci95": false
+    },
+    "all_exclude_zero": false
+   },
+   "verdict": "not_resolvable",
+   "reason": "Every interval includes zero; the point estimate is below the design's resolution.",
+   "uniform_dominance_licensed": false
+  },
+  "band_minus_global|attack_trace_block_rate": {
+   "metric": "attack_trace_block_rate",
+   "design_envelope": {
+    "min": {
+     "config": "published_prefix|block",
+     "difference_pp": 0.0
+    },
+    "max": {
+     "config": "full|log_and_allow",
+     "difference_pp": 0.135
+    },
+    "span_pp": 0.135,
+    "sign": "nonnegative"
+   },
+   "configurations": [
+    {
+     "frame": "full",
+     "semantics": "log_and_allow",
+     "point_pp": 0.1341,
+     "cell_ci95": [
+      0.0671,
+      0.2107
+     ],
+     "excludes_zero": true
+    },
+    {
+     "frame": "prefix_400",
+     "semantics": "log_and_allow",
+     "point_pp": 0.0,
+     "cell_ci95": [
+      0.0,
+      0.0
+     ],
+     "excludes_zero": false
+    },
+    {
+     "frame": "full",
+     "semantics": "block",
+     "point_pp": 0.1341,
+     "cell_ci95": [
+      0.0671,
+      0.2107
+     ],
+     "excludes_zero": true
+    },
+    {
+     "frame": "prefix_400",
+     "semantics": "block",
+     "point_pp": 0.0,
+     "cell_ci95": [
+      0.0,
+      0.0
+     ],
+     "excludes_zero": false
+    }
+   ],
+   "clustered_census": {
+    "point_pp": 0.1341,
+    "intervals": {
+     "cell_ci95": [
+      0.0671,
+      0.2107
+     ],
+     "user_cluster_ci95": [
+      0.0,
+      0.4178
+     ],
+     "injection_cluster_ci95": [
+      0.0896,
+      0.1684
+     ],
+     "twoway_ci95": [
+      -0.121,
+      0.3892
+     ]
+    },
+    "excludes_zero": {
+     "cell_ci95": true,
+     "user_cluster_ci95": false,
+     "injection_cluster_ci95": true,
+     "twoway_ci95": false
+    },
+    "all_exclude_zero": false
+   },
+   "verdict": "census_cell_only",
+   "reason": "Some configuration excludes zero, but the design envelope or the clustered census intervals do not support a uniform claim.",
+   "uniform_dominance_licensed": false
+  },
+  "band_minus_global|benign_trace_block_rate": {
+   "metric": "benign_trace_block_rate",
+   "design_envelope": {
+    "min": {
+     "config": "published_prefix|log_and_allow",
+     "difference_pp": 2.062
+    },
+    "max": {
+     "config": "full|block",
+     "difference_pp": 3.093
+    },
+    "span_pp": 1.031,
+    "sign": "positive"
+   },
+   "configurations": [
+    {
+     "frame": "full",
+     "semantics": "log_and_allow",
+     "point_pp": 2.0619,
+     "cell_ci95": [
+      0.0,
+      5.1546
+     ],
+     "excludes_zero": false
+    },
+    {
+     "frame": "full",
+     "semantics": "block",
+     "point_pp": 3.0928,
+     "cell_ci95": [
+      0.0,
+      7.2165
+     ],
+     "excludes_zero": false
+    }
+   ],
+   "clustered_census": {
+    "point_pp": 3.0928,
+    "intervals": {
+     "cell_ci95": [
+      0.0,
+      7.2165
+     ],
+     "user_cluster_ci95": [
+      0.0,
+      7.2165
+     ]
+    },
+    "excludes_zero": {
+     "cell_ci95": false,
+     "user_cluster_ci95": false
+    },
+    "all_exclude_zero": false
+   },
+   "verdict": "not_resolvable",
+   "reason": "Every interval includes zero; the point estimate is below the design's resolution.",
+   "uniform_dominance_licensed": false
+  }
+ },
+ "study2_top_two": {
+  "design_envelope": {
+   "min": {
+    "config": "census",
+    "difference_pp": -1.113
+   },
+   "max": {
+    "config": "banking",
+    "difference_pp": 10.417
+   },
+   "span_pp": 11.53,
+   "sign": "sign_change"
+  },
+  "verdict": "sign_change",
+  "reason": "The design envelope contains both signs, so no ranking is uniform over the declared frames.",
+  "uniform_dominance_licensed": false,
+  "clustered_census": null
+ },
+ "summary": {
+  "strict_uniform_claims": 0,
+  "licensed_claims": [],
+  "verdicts": {
+   "band_minus_hard|attack_trace_block_rate": "set_identity",
+   "band_minus_hard|benign_trace_block_rate": "not_resolvable",
+   "band_minus_global|attack_trace_block_rate": "census_cell_only",
+   "band_minus_global|benign_trace_block_rate": "not_resolvable"
+  }
+ },
+ "not_claimed": [
+  "No confidence interval is attached to the design envelope; it is a range over enumerated configurations.",
+  "No uniform-dominance claim is licensed anywhere in this corpus.",
+  "The prefix has no clustered interval; clustering is reported at the census only.",
+  "Study 2 has no per-step actions, so only its frame envelope is used."
+ ]
+}

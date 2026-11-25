@@ -1,0 +1,647 @@
+{
+ "experiment": "T03 design sensitivity envelope",
+ "inputs": {
+  "study1": {
+   "path": "benchmark/results/measurement_reanalysis.json",
+   "sha256": "fae570dd5592595948a407f43adb72d99e430b1822d2cafcfd432c213ab01fb4"
+  },
+  "study2": {
+   "path": "benchmark/results/external_validity_agentdojo.json",
+   "sha256": "cc316466ad3ff74e60e507932420e7a77552e8b733f00db9234ed0501668f5a7"
+  }
+ },
+ "design_sets": {
+  "study1": {
+   "frames": [
+    "full",
+    "published_prefix"
+   ],
+   "semantics": [
+    "log_and_allow",
+    "block"
+   ],
+   "rules": [
+    "no_relaxation",
+    "global_cap",
+    "band_split",
+    "hard_first"
+   ],
+   "configurations": 16,
+   "benign_distinct_values": 8,
+   "note": "The prefix truncates attack traces only, so benign readings duplicate across frames."
+  },
+  "study2": {
+   "frames": [
+    "census",
+    "prefix_400",
+    "banking"
+   ],
+   "defenses": 5,
+   "configurations": 15
+  }
+ },
+ "study1": {
+  "attack_trace_block_rate": {
+   "envelopes": {
+    "no_relaxation": {
+     "min": {
+      "config": "full|log_and_allow",
+      "value": 4.426
+     },
+     "max": {
+      "config": "published_prefix|block",
+      "value": 10.5
+     },
+     "width_pp": 6.074
+    },
+    "global_cap": {
+     "min": {
+      "config": "full|log_and_allow",
+      "value": 2.95
+     },
+     "max": {
+      "config": "full|block",
+      "value": 7.376
+     },
+     "width_pp": 4.426
+    },
+    "band_split": {
+     "min": {
+      "config": "full|log_and_allow",
+      "value": 3.085
+     },
+     "max": {
+      "config": "full|block",
+      "value": 7.51
+     },
+     "width_pp": 4.425
+    },
+    "hard_first": {
+     "min": {
+      "config": "full|log_and_allow",
+      "value": 3.085
+     },
+     "max": {
+      "config": "full|block",
+      "value": 7.51
+     },
+     "width_pp": 4.425
+    }
+   },
+   "between_system": {
+    "no_relaxation_minus_global_cap": {
+     "min": {
+      "config": "full|block",
+      "difference_pp": 1.475
+     },
+     "max": {
+      "config": "published_prefix|block",
+      "difference_pp": 3.5
+     },
+     "span_pp": 2.025,
+     "sign": "positive"
+    },
+    "no_relaxation_minus_band_split": {
+     "min": {
+      "config": "full|log_and_allow",
+      "difference_pp": 1.341
+     },
+     "max": {
+      "config": "published_prefix|block",
+      "difference_pp": 3.5
+     },
+     "span_pp": 2.159,
+     "sign": "positive"
+    },
+    "no_relaxation_minus_hard_first": {
+     "min": {
+      "config": "full|log_and_allow",
+      "difference_pp": 1.341
+     },
+     "max": {
+      "config": "published_prefix|block",
+      "difference_pp": 3.5
+     },
+     "span_pp": 2.159,
+     "sign": "positive"
+    },
+    "global_cap_minus_band_split": {
+     "min": {
+      "config": "full|log_and_allow",
+      "difference_pp": -0.135
+     },
+     "max": {
+      "config": "published_prefix|block",
+      "difference_pp": 0.0
+     },
+     "span_pp": 0.135,
+     "sign": "nonpositive"
+    },
+    "global_cap_minus_hard_first": {
+     "min": {
+      "config": "full|log_and_allow",
+      "difference_pp": -0.135
+     },
+     "max": {
+      "config": "published_prefix|block",
+      "difference_pp": 0.0
+     },
+     "span_pp": 0.135,
+     "sign": "nonpositive"
+    },
+    "band_split_minus_hard_first": {
+     "min": {
+      "config": "full|log_and_allow",
+      "difference_pp": 0.0
+     },
+     "max": {
+      "config": "published_prefix|block",
+      "difference_pp": 0.0
+     },
+     "span_pp": 0.0,
+     "sign": "tie"
+    }
+   },
+   "distinct_values": [
+    2.9499999999999997,
+    3.085,
+    3.5000000000000004,
+    4.426,
+    7.000000000000001,
+    7.376,
+    7.51,
+    8.851,
+    10.5
+   ]
+  },
+  "benign_trace_block_rate": {
+   "envelopes": {
+    "no_relaxation": {
+     "min": {
+      "config": "full|log_and_allow",
+      "value": 37.113
+     },
+     "max": {
+      "config": "published_prefix|block",
+      "value": 46.392
+     },
+     "width_pp": 9.279
+    },
+    "global_cap": {
+     "min": {
+      "config": "full|log_and_allow",
+      "value": 26.804
+     },
+     "max": {
+      "config": "published_prefix|block",
+      "value": 38.144
+     },
+     "width_pp": 11.34
+    },
+    "band_split": {
+     "min": {
+      "config": "full|log_and_allow",
+      "value": 28.866
+     },
+     "max": {
+      "config": "published_prefix|block",
+      "value": 41.237
+     },
+     "width_pp": 12.371
+    },
+    "hard_first": {
+     "min": {
+      "config": "full|log_and_allow",
+      "value": 28.866
+     },
+     "max": {
+      "config": "published_prefix|block",
+      "value": 38.144
+     },
+     "width_pp": 9.278
+    }
+   },
+   "between_system": {
+    "no_relaxation_minus_global_cap": {
+     "min": {
+      "config": "full|block",
+      "difference_pp": 8.248
+     },
+     "max": {
+      "config": "published_prefix|log_and_allow",
+      "difference_pp": 10.309
+     },
+     "span_pp": 2.061,
+     "sign": "positive"
+    },
+    "no_relaxation_minus_band_split": {
+     "min": {
+      "config": "full|block",
+      "difference_pp": 5.155
+     },
+     "max": {
+      "config": "published_prefix|log_and_allow",
+      "difference_pp": 8.247
+     },
+     "span_pp": 3.092,
+     "sign": "positive"
+    },
+    "no_relaxation_minus_hard_first": {
+     "min": {
+      "config": "full|log_and_allow",
+      "difference_pp": 8.247
+     },
+     "max": {
+      "config": "published_prefix|block",
+      "difference_pp": 8.248
+     },
+     "span_pp": 0.001,
+     "sign": "positive"
+    },
+    "global_cap_minus_band_split": {
+     "min": {
+      "config": "full|block",
+      "difference_pp": -3.093
+     },
+     "max": {
+      "config": "published_prefix|log_and_allow",
+      "difference_pp": -2.062
+     },
+     "span_pp": 1.031,
+     "sign": "negative"
+    },
+    "global_cap_minus_hard_first": {
+     "min": {
+      "config": "full|log_and_allow",
+      "difference_pp": -2.062
+     },
+     "max": {
+      "config": "published_prefix|block",
+      "difference_pp": 0.0
+     },
+     "span_pp": 2.062,
+     "sign": "nonpositive"
+    },
+    "band_split_minus_hard_first": {
+     "min": {
+      "config": "full|log_and_allow",
+      "difference_pp": 0.0
+     },
+     "max": {
+      "config": "published_prefix|block",
+      "difference_pp": 3.093
+     },
+     "span_pp": 3.093,
+     "sign": "nonnegative"
+    }
+   },
+   "distinct_values": [
+    26.804,
+    28.866000000000003,
+    37.113,
+    38.144,
+    41.237,
+    46.392
+   ]
+  },
+  "review_step_rate_pct": {
+   "no_relaxation": {
+    "min": 5.015,
+    "max": 5.015
+   },
+   "global_cap": {
+    "min": 5.015,
+    "max": 5.015
+   },
+   "band_split": {
+    "min": 5.9,
+    "max": 5.9
+   },
+   "hard_first": {
+    "min": 5.015,
+    "max": 5.015
+   }
+  }
+ },
+ "study2": {
+  "envelopes": {
+   "none": {
+    "min": {
+     "config": "census",
+     "value": 47.695
+    },
+    "max": {
+     "config": "banking",
+     "value": 62.5
+    },
+    "width_pp": 14.805
+   },
+   "tool_filter": {
+    "min": {
+     "config": "census",
+     "value": 6.836
+    },
+    "max": {
+     "config": "banking",
+     "value": 11.111
+    },
+    "width_pp": 4.275
+   },
+   "spotlighting": {
+    "min": {
+     "config": "census",
+     "value": 41.653
+    },
+    "max": {
+     "config": "banking",
+     "value": 61.806
+    },
+    "width_pp": 20.153
+   },
+   "pi_detector": {
+    "min": {
+     "config": "banking",
+     "value": 0.694
+    },
+    "max": {
+     "config": "census",
+     "value": 7.949
+    },
+    "width_pp": 7.255
+   },
+   "repeat_user_prompt": {
+    "min": {
+     "config": "census",
+     "value": 27.822
+    },
+    "max": {
+     "config": "banking",
+     "value": 46.528
+    },
+    "width_pp": 18.706
+   }
+  },
+  "between_system": {
+   "none_minus_tool_filter": {
+    "min": {
+     "config": "census",
+     "difference_pp": 40.859
+    },
+    "max": {
+     "config": "banking",
+     "difference_pp": 51.389
+    },
+    "span_pp": 10.53,
+    "sign": "positive"
+   },
+   "none_minus_spotlighting": {
+    "min": {
+     "config": "banking",
+     "difference_pp": 0.694
+    },
+    "max": {
+     "config": "prefix_400",
+     "difference_pp": 6.75
+    },
+    "span_pp": 6.056,
+    "sign": "positive"
+   },
+   "none_minus_pi_detector": {
+    "min": {
+     "config": "census",
+     "difference_pp": 39.746
+    },
+    "max": {
+     "config": "banking",
+     "difference_pp": 61.806
+    },
+    "span_pp": 22.06,
+    "sign": "positive"
+   },
+   "none_minus_repeat_user_prompt": {
+    "min": {
+     "config": "banking",
+     "difference_pp": 15.972
+    },
+    "max": {
+     "config": "census",
+     "difference_pp": 19.873
+    },
+    "span_pp": 3.901,
+    "sign": "positive"
+   },
+   "tool_filter_minus_spotlighting": {
+    "min": {
+     "config": "banking",
+     "difference_pp": -50.695
+    },
+    "max": {
+     "config": "census",
+     "difference_pp": -34.817
+    },
+    "span_pp": 15.878,
+    "sign": "negative"
+   },
+   "tool_filter_minus_pi_detector": {
+    "min": {
+     "config": "census",
+     "difference_pp": -1.113
+    },
+    "max": {
+     "config": "banking",
+     "difference_pp": 10.417
+    },
+    "span_pp": 11.53,
+    "sign": "sign_change"
+   },
+   "tool_filter_minus_repeat_user_prompt": {
+    "min": {
+     "config": "banking",
+     "difference_pp": -35.417
+    },
+    "max": {
+     "config": "census",
+     "difference_pp": -20.986
+    },
+    "span_pp": 14.431,
+    "sign": "negative"
+   },
+   "spotlighting_minus_pi_detector": {
+    "min": {
+     "config": "census",
+     "difference_pp": 33.704
+    },
+    "max": {
+     "config": "banking",
+     "difference_pp": 61.112
+    },
+    "span_pp": 27.408,
+    "sign": "positive"
+   },
+   "spotlighting_minus_repeat_user_prompt": {
+    "min": {
+     "config": "prefix_400",
+     "difference_pp": 10.75
+    },
+    "max": {
+     "config": "banking",
+     "difference_pp": 15.278
+    },
+    "span_pp": 4.528,
+    "sign": "positive"
+   },
+   "pi_detector_minus_repeat_user_prompt": {
+    "min": {
+     "config": "banking",
+     "difference_pp": -45.834
+    },
+    "max": {
+     "config": "census",
+     "difference_pp": -19.873
+    },
+    "span_pp": 25.961,
+    "sign": "negative"
+   }
+  },
+  "sign_changes": [
+   "tool_filter_minus_pi_detector"
+  ],
+  "frame_values": {
+   "census": {
+    "gpt-4o-2024-05-13": 47.695,
+    "gpt-4o-2024-05-13-tool_filter": 6.836,
+    "gpt-4o-2024-05-13-spotlighting_with_delimiting": 41.653,
+    "gpt-4o-2024-05-13-transformers_pi_detector": 7.949,
+    "gpt-4o-2024-05-13-repeat_user_prompt": 27.822
+   },
+   "prefix_400": {
+    "gpt-4o-2024-05-13": 53.25,
+    "gpt-4o-2024-05-13-tool_filter": 8.25,
+    "gpt-4o-2024-05-13-spotlighting_with_delimiting": 46.5,
+    "gpt-4o-2024-05-13-transformers_pi_detector": 4.0,
+    "gpt-4o-2024-05-13-repeat_user_prompt": 35.75
+   },
+   "banking": {
+    "gpt-4o-2024-05-13": 62.5,
+    "gpt-4o-2024-05-13-tool_filter": 11.111,
+    "gpt-4o-2024-05-13-spotlighting_with_delimiting": 61.806,
+    "gpt-4o-2024-05-13-transformers_pi_detector": 0.694,
+    "gpt-4o-2024-05-13-repeat_user_prompt": 46.528
+   }
+  }
+ },
+ "licensing": {
+  "rule": "A one-metric uniform-dominance claim requires the paired difference envelope to exclude zero. A joint claim over attack and benign rates also requires the second metric not to reverse. Sampling uncertainty is added in E04.",
+  "study1_attack_and_benign": {
+   "band_split_vs_hard_first": {
+    "attack": {
+     "min": {
+      "config": "full|log_and_allow",
+      "difference_pp": 0.0
+     },
+     "max": {
+      "config": "published_prefix|block",
+      "difference_pp": 0.0
+     },
+     "span_pp": 0.0,
+     "sign": "tie"
+    },
+    "benign": {
+     "min": {
+      "config": "full|log_and_allow",
+      "difference_pp": 0.0
+     },
+     "max": {
+      "config": "published_prefix|block",
+      "difference_pp": 3.093
+     },
+     "span_pp": 3.093,
+     "sign": "nonnegative"
+    },
+    "review_step_rate_pct": {
+     "band_split": {
+      "min": 5.9,
+      "max": 5.9
+     },
+     "hard_first": {
+      "min": 5.015,
+      "max": 5.015
+     }
+    },
+    "joint": "hard first weakly dominates: attack tie, benign never higher; review load is also lower."
+   },
+   "band_split_vs_global_cap": {
+    "attack": {
+     "min": {
+      "config": "published_prefix|block",
+      "difference_pp": -0.0
+     },
+     "max": {
+      "config": "full|log_and_allow",
+      "difference_pp": 0.135
+     },
+     "span_pp": 0.135,
+     "sign": "nonnegative"
+    },
+    "benign": {
+     "min": {
+      "config": "published_prefix|log_and_allow",
+      "difference_pp": 2.062
+     },
+     "max": {
+      "config": "full|block",
+      "difference_pp": 3.093
+     },
+     "span_pp": 1.031,
+     "sign": "positive"
+    },
+    "joint": "no uniform dominance: the attack edge is frame-specific and the benign cost is positive."
+   }
+  },
+  "study2_top_two": {
+   "pair": "tool_filter_minus_pi_detector",
+   "difference": {
+    "min": {
+     "config": "census",
+     "difference_pp": -1.113
+    },
+    "max": {
+     "config": "banking",
+     "difference_pp": 10.417
+    },
+    "span_pp": 11.53,
+    "sign": "sign_change"
+   },
+   "joint": "no uniform ranking: the pair changes sign across frames."
+  },
+  "design_to_difference_ratio": {
+   "pair": "band_split_minus_global_cap",
+   "single_system_width_pp": 4.4257,
+   "between_system_span_pp": 0.1341,
+   "ratio": 33.0,
+   "exact": {
+    "definition": "attack counts over the same denominator: (block - log) for the band-split width, and (census difference - prefix difference) for the band-minus-global span",
+    "denominator": 10439,
+    "band_split": {
+     "log_blocked": 322,
+     "block_blocked": 784,
+     "width_numerator": 462,
+     "width_pp": 4.4257
+    },
+    "band_minus_global": {
+     "census_numerator": 14,
+     "prefix_numerator": 0,
+     "span_numerator": 14,
+     "span_pp": 0.1341
+    },
+    "ratio": 33.0
+   }
+  }
+ },
+ "not_claimed": [
+  "The envelope is a range over declared designs, not a confidence interval.",
+  "No probability is assigned to any design; the set is enumerated, not sampled.",
+  "No claim beyond the four rules, two semantics and three frames listed.",
+  "No joint utility claim: the envelope covers trace block rates and ASR only."
+ ]
+}

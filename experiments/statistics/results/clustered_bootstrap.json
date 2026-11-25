@@ -1,0 +1,157 @@
+{
+ "experiment": "EXP-01 clustered uncertainty",
+ "method": {
+  "cell": "paired trace bootstrap",
+  "user": "bootstrap over suite|user_task clusters",
+  "injection": "bootstrap over suite|injection_task clusters",
+  "two_way": "Cameron-Gelbach-Miller sandwich",
+  "bootstrap_draws": 2000,
+  "seeds": {
+   "cell": 20261123,
+   "user": 20261124,
+   "injection": 20261125
+  },
+  "interval": "percentile 2.5-97.5 for bootstrap; normal 95% for two-way"
+ },
+ "source": {
+  "path": "benchmark/results/e2b_trajectory_outcomes.jsonl",
+  "sha256": "46260b678f4afb21cd595ccbac02d72c08c6b780d141054f5eab62c41f1eb643"
+ },
+ "contrasts": {
+  "band_minus_hard|block": {
+   "attack": {
+    "n_traces": 10439,
+    "n_user_clusters": 97,
+    "n_injection_clusters": 35,
+    "point_pp": 0.0,
+    "cell_ci95": [
+     0.0,
+     0.0
+    ],
+    "user_cluster_ci95": [
+     0.0,
+     0.0
+    ],
+    "injection_cluster_ci95": [
+     0.0,
+     0.0
+    ],
+    "twoway_ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "benign": {
+    "n_traces": 97,
+    "n_user_clusters": 97,
+    "n_injection_clusters": 4,
+    "point_pp": 3.0928,
+    "cell_ci95": [
+     0.0,
+     7.2165
+    ],
+    "user_cluster_ci95": [
+     0.0,
+     7.2165
+    ]
+   }
+  },
+  "band_minus_global|block": {
+   "attack": {
+    "n_traces": 10439,
+    "n_user_clusters": 97,
+    "n_injection_clusters": 35,
+    "point_pp": 0.1341,
+    "cell_ci95": [
+     0.0671,
+     0.2107
+    ],
+    "user_cluster_ci95": [
+     0.0,
+     0.4178
+    ],
+    "injection_cluster_ci95": [
+     0.0896,
+     0.1684
+    ],
+    "twoway_ci95": [
+     -0.121,
+     0.3892
+    ]
+   },
+   "benign": {
+    "n_traces": 97,
+    "n_user_clusters": 97,
+    "n_injection_clusters": 4,
+    "point_pp": 3.0928,
+    "cell_ci95": [
+     0.0,
+     7.2165
+    ],
+    "user_cluster_ci95": [
+     0.0,
+     7.2165
+    ]
+   }
+  },
+  "band_minus_hard|log_and_allow": {
+   "attack": {
+    "n_traces": 10439,
+    "n_user_clusters": 97,
+    "n_injection_clusters": 35,
+    "point_pp": 0.0,
+    "cell_ci95": [
+     0.0,
+     0.0
+    ],
+    "user_cluster_ci95": [
+     0.0,
+     0.0
+    ],
+    "injection_cluster_ci95": [
+     0.0,
+     0.0
+    ],
+    "twoway_ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "benign": {
+    "n_traces": 97,
+    "n_user_clusters": 97,
+    "n_injection_clusters": 4,
+    "point_pp": 0.0,
+    "cell_ci95": [
+     0.0,
+     0.0
+    ],
+    "user_cluster_ci95": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "review_step_rate|block": {
+   "benign": {
+    "n_traces": 97,
+    "n_user_clusters": 97,
+    "n_injection_clusters": 4,
+    "point_pp": 0.885,
+    "cell_ci95": [
+     0.0,
+     2.0529
+    ],
+    "user_cluster_ci95": [
+     0.0,
+     1.972
+    ]
+   }
+  }
+ },
+ "notes": [
+  "Attack unit is a trace; benign review contrast is step-weighted.",
+  "Benign traces have no injection task, so injection clustering is omitted.",
+  "All contrasts preserve the A/B pairing because every trace carries both rules."
+ ]
+}

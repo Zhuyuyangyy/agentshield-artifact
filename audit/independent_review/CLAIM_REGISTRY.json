@@ -1,0 +1,1204 @@
+{
+ "schema_version": "1.0",
+ "generated_at": "2026-11-25",
+ "note": "Every entry is checked by audit/independent_review/recompute.py. Counts and denominators are checked when present; rates use the declared numeric tolerance. Entries whose scope is absent in a mode are reported as not executed, never as passed.",
+ "claims": [
+  {
+   "claim_id": "S1-ROWS",
+   "scope": "study1",
+   "value_path": [
+    "rows"
+   ],
+   "count_path": null,
+   "paper_location": "Section 5.1",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "total replayed trajectories",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 10536,
+   "numeric_tolerance": 0,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-ATTACK",
+   "scope": "study1",
+   "value_path": [
+    "attack"
+   ],
+   "count_path": null,
+   "paper_location": "Section 5.1",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "attack trajectories",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 10439,
+   "numeric_tolerance": 0,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-BENIGN",
+   "scope": "study1",
+   "value_path": [
+    "benign"
+   ],
+   "count_path": null,
+   "paper_location": "Section 5.1",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "benign trajectories",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 97,
+   "numeric_tolerance": 0,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-BLOCK-SET-BAND-SPLIT",
+   "scope": "study1",
+   "value_path": [
+    "block_sets",
+    "band_split"
+   ],
+   "count_path": null,
+   "paper_location": "Section 5.2; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "attack traces in the band_split blocked set",
+   "expected_count": 784,
+   "expected_denominator": 10439,
+   "expected_value": 784,
+   "numeric_tolerance": 0,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-BLOCK-SET-HARD-FIRST",
+   "scope": "study1",
+   "value_path": [
+    "block_sets",
+    "hard_first"
+   ],
+   "count_path": null,
+   "paper_location": "Section 5.2; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "attack traces in the hard_first blocked set",
+   "expected_count": 784,
+   "expected_denominator": 10439,
+   "expected_value": 784,
+   "numeric_tolerance": 0,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-BLOCK-SET-SYMMETRIC-DIFFERENCE",
+   "scope": "study1",
+   "value_path": [
+    "block_sets",
+    "symmetric_difference"
+   ],
+   "count_path": null,
+   "paper_location": "Section 5.2; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "attack traces in the symmetric_difference blocked set",
+   "expected_count": 0,
+   "expected_denominator": 10439,
+   "expected_value": 0,
+   "numeric_tolerance": 0,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-ATTACK-NO-RELAXATION-LOG-AND-ALLOW",
+   "scope": "study1",
+   "value_path": [
+    "rates_pct",
+    "no_relaxation|log_and_allow",
+    "attack_pct"
+   ],
+   "count_path": [
+    "rates_pct",
+    "no_relaxation|log_and_allow",
+    "attack_blocked"
+   ],
+   "paper_location": "Section 5.1; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "attack traces with at least one blocked step / attack traces",
+   "expected_count": 462,
+   "expected_denominator": 10439,
+   "expected_value": 4.4257,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-BENIGN-NO-RELAXATION-LOG-AND-ALLOW",
+   "scope": "study1",
+   "value_path": [
+    "rates_pct",
+    "no_relaxation|log_and_allow",
+    "benign_pct"
+   ],
+   "count_path": [
+    "rates_pct",
+    "no_relaxation|log_and_allow",
+    "benign_blocked"
+   ],
+   "paper_location": "Section 5.1; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "benign traces with at least one blocked step / benign traces",
+   "expected_count": 36,
+   "expected_denominator": 97,
+   "expected_value": 37.1134,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-ATTACK-NO-RELAXATION-BLOCK",
+   "scope": "study1",
+   "value_path": [
+    "rates_pct",
+    "no_relaxation|block",
+    "attack_pct"
+   ],
+   "count_path": [
+    "rates_pct",
+    "no_relaxation|block",
+    "attack_blocked"
+   ],
+   "paper_location": "Section 5.1; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "attack traces with at least one blocked step / attack traces",
+   "expected_count": 924,
+   "expected_denominator": 10439,
+   "expected_value": 8.8514,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-BENIGN-NO-RELAXATION-BLOCK",
+   "scope": "study1",
+   "value_path": [
+    "rates_pct",
+    "no_relaxation|block",
+    "benign_pct"
+   ],
+   "count_path": [
+    "rates_pct",
+    "no_relaxation|block",
+    "benign_blocked"
+   ],
+   "paper_location": "Section 5.1; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "benign traces with at least one blocked step / benign traces",
+   "expected_count": 45,
+   "expected_denominator": 97,
+   "expected_value": 46.3918,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-ATTACK-GLOBAL-CAP-LOG-AND-ALLOW",
+   "scope": "study1",
+   "value_path": [
+    "rates_pct",
+    "global_cap|log_and_allow",
+    "attack_pct"
+   ],
+   "count_path": [
+    "rates_pct",
+    "global_cap|log_and_allow",
+    "attack_blocked"
+   ],
+   "paper_location": "Section 5.1; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "attack traces with at least one blocked step / attack traces",
+   "expected_count": 308,
+   "expected_denominator": 10439,
+   "expected_value": 2.9505,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-BENIGN-GLOBAL-CAP-LOG-AND-ALLOW",
+   "scope": "study1",
+   "value_path": [
+    "rates_pct",
+    "global_cap|log_and_allow",
+    "benign_pct"
+   ],
+   "count_path": [
+    "rates_pct",
+    "global_cap|log_and_allow",
+    "benign_blocked"
+   ],
+   "paper_location": "Section 5.1; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "benign traces with at least one blocked step / benign traces",
+   "expected_count": 26,
+   "expected_denominator": 97,
+   "expected_value": 26.8041,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-ATTACK-GLOBAL-CAP-BLOCK",
+   "scope": "study1",
+   "value_path": [
+    "rates_pct",
+    "global_cap|block",
+    "attack_pct"
+   ],
+   "count_path": [
+    "rates_pct",
+    "global_cap|block",
+    "attack_blocked"
+   ],
+   "paper_location": "Section 5.1; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "attack traces with at least one blocked step / attack traces",
+   "expected_count": 770,
+   "expected_denominator": 10439,
+   "expected_value": 7.3762,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-BENIGN-GLOBAL-CAP-BLOCK",
+   "scope": "study1",
+   "value_path": [
+    "rates_pct",
+    "global_cap|block",
+    "benign_pct"
+   ],
+   "count_path": [
+    "rates_pct",
+    "global_cap|block",
+    "benign_blocked"
+   ],
+   "paper_location": "Section 5.1; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "benign traces with at least one blocked step / benign traces",
+   "expected_count": 37,
+   "expected_denominator": 97,
+   "expected_value": 38.1443,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-ATTACK-BAND-SPLIT-LOG-AND-ALLOW",
+   "scope": "study1",
+   "value_path": [
+    "rates_pct",
+    "band_split|log_and_allow",
+    "attack_pct"
+   ],
+   "count_path": [
+    "rates_pct",
+    "band_split|log_and_allow",
+    "attack_blocked"
+   ],
+   "paper_location": "Section 5.1; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "attack traces with at least one blocked step / attack traces",
+   "expected_count": 322,
+   "expected_denominator": 10439,
+   "expected_value": 3.0846,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-BENIGN-BAND-SPLIT-LOG-AND-ALLOW",
+   "scope": "study1",
+   "value_path": [
+    "rates_pct",
+    "band_split|log_and_allow",
+    "benign_pct"
+   ],
+   "count_path": [
+    "rates_pct",
+    "band_split|log_and_allow",
+    "benign_blocked"
+   ],
+   "paper_location": "Section 5.1; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "benign traces with at least one blocked step / benign traces",
+   "expected_count": 28,
+   "expected_denominator": 97,
+   "expected_value": 28.866,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-ATTACK-BAND-SPLIT-BLOCK",
+   "scope": "study1",
+   "value_path": [
+    "rates_pct",
+    "band_split|block",
+    "attack_pct"
+   ],
+   "count_path": [
+    "rates_pct",
+    "band_split|block",
+    "attack_blocked"
+   ],
+   "paper_location": "Section 5.1; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "attack traces with at least one blocked step / attack traces",
+   "expected_count": 784,
+   "expected_denominator": 10439,
+   "expected_value": 7.5103,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-BENIGN-BAND-SPLIT-BLOCK",
+   "scope": "study1",
+   "value_path": [
+    "rates_pct",
+    "band_split|block",
+    "benign_pct"
+   ],
+   "count_path": [
+    "rates_pct",
+    "band_split|block",
+    "benign_blocked"
+   ],
+   "paper_location": "Section 5.1; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "benign traces with at least one blocked step / benign traces",
+   "expected_count": 40,
+   "expected_denominator": 97,
+   "expected_value": 41.2371,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-ATTACK-HARD-FIRST-LOG-AND-ALLOW",
+   "scope": "study1",
+   "value_path": [
+    "rates_pct",
+    "hard_first|log_and_allow",
+    "attack_pct"
+   ],
+   "count_path": [
+    "rates_pct",
+    "hard_first|log_and_allow",
+    "attack_blocked"
+   ],
+   "paper_location": "Section 5.1; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "attack traces with at least one blocked step / attack traces",
+   "expected_count": 322,
+   "expected_denominator": 10439,
+   "expected_value": 3.0846,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-BENIGN-HARD-FIRST-LOG-AND-ALLOW",
+   "scope": "study1",
+   "value_path": [
+    "rates_pct",
+    "hard_first|log_and_allow",
+    "benign_pct"
+   ],
+   "count_path": [
+    "rates_pct",
+    "hard_first|log_and_allow",
+    "benign_blocked"
+   ],
+   "paper_location": "Section 5.1; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "benign traces with at least one blocked step / benign traces",
+   "expected_count": 28,
+   "expected_denominator": 97,
+   "expected_value": 28.866,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-ATTACK-HARD-FIRST-BLOCK",
+   "scope": "study1",
+   "value_path": [
+    "rates_pct",
+    "hard_first|block",
+    "attack_pct"
+   ],
+   "count_path": [
+    "rates_pct",
+    "hard_first|block",
+    "attack_blocked"
+   ],
+   "paper_location": "Section 5.1; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "attack traces with at least one blocked step / attack traces",
+   "expected_count": 784,
+   "expected_denominator": 10439,
+   "expected_value": 7.5103,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-BENIGN-HARD-FIRST-BLOCK",
+   "scope": "study1",
+   "value_path": [
+    "rates_pct",
+    "hard_first|block",
+    "benign_pct"
+   ],
+   "count_path": [
+    "rates_pct",
+    "hard_first|block",
+    "benign_blocked"
+   ],
+   "paper_location": "Section 5.1; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "benign traces with at least one blocked step / benign traces",
+   "expected_count": 37,
+   "expected_denominator": 97,
+   "expected_value": 38.1443,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-PREFIX-NO-RELAXATION-BLOCK",
+   "scope": "study1",
+   "value_path": [
+    "prefix_pct",
+    "no_relaxation|block",
+    "pct"
+   ],
+   "count_path": [
+    "prefix_pct",
+    "no_relaxation|block",
+    "blocked"
+   ],
+   "paper_location": "Section 5.2; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "blocked attack traces in the fixed 400-trace prefix",
+   "expected_count": 42,
+   "expected_denominator": 400,
+   "expected_value": 10.5,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-PREFIX-GLOBAL-CAP-BLOCK",
+   "scope": "study1",
+   "value_path": [
+    "prefix_pct",
+    "global_cap|block",
+    "pct"
+   ],
+   "count_path": [
+    "prefix_pct",
+    "global_cap|block",
+    "blocked"
+   ],
+   "paper_location": "Section 5.2; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "blocked attack traces in the fixed 400-trace prefix",
+   "expected_count": 28,
+   "expected_denominator": 400,
+   "expected_value": 7.0,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-PREFIX-BAND-SPLIT-BLOCK",
+   "scope": "study1",
+   "value_path": [
+    "prefix_pct",
+    "band_split|block",
+    "pct"
+   ],
+   "count_path": [
+    "prefix_pct",
+    "band_split|block",
+    "blocked"
+   ],
+   "paper_location": "Section 5.2; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "blocked attack traces in the fixed 400-trace prefix",
+   "expected_count": 28,
+   "expected_denominator": 400,
+   "expected_value": 7.0,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S1-PREFIX-HARD-FIRST-BLOCK",
+   "scope": "study1",
+   "value_path": [
+    "prefix_pct",
+    "hard_first|block",
+    "pct"
+   ],
+   "count_path": [
+    "prefix_pct",
+    "hard_first|block",
+    "blocked"
+   ],
+   "paper_location": "Section 5.2; Appendix B",
+   "source_files": [
+    "benchmark/results/e2b_trajectory_outcomes.jsonl"
+   ],
+   "metric_definition": "blocked attack traces in the fixed 400-trace prefix",
+   "expected_count": 28,
+   "expected_denominator": 400,
+   "expected_value": 7.0,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "REV-COMPOSITIONS",
+   "scope": "reversal",
+   "value_path": [
+    "compositions"
+   ],
+   "count_path": null,
+   "paper_location": "Section 6.2; Appendix B",
+   "source_files": [
+    "experiments/sensitivity/results/reversal_distance.json"
+   ],
+   "metric_definition": "number of 400-cell suite compositions enumerated",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 1501380,
+   "numeric_tolerance": 0,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "REV-CROSSING-L1",
+   "scope": "reversal",
+   "value_path": [
+    "minimum",
+    "distance_l1"
+   ],
+   "count_path": null,
+   "paper_location": "Section 6.2; Appendix B",
+   "source_files": [
+    "experiments/sensitivity/results/reversal_distance.json"
+   ],
+   "metric_definition": "minimum L1 composition distance over g(w) >= 0",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 0.10713,
+   "numeric_tolerance": 1e-06,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "REV-CROSSING-GAP",
+   "scope": "reversal",
+   "value_path": [
+    "minimum",
+    "gap_pp"
+   ],
+   "count_path": null,
+   "paper_location": "Section 6.2; Appendix B",
+   "source_files": [
+    "experiments/sensitivity/results/reversal_distance.json"
+   ],
+   "metric_definition": "tool_filter minus pi_detector gap at the crossing composition",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 0.010565,
+   "numeric_tolerance": 1e-06,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "REV-TIE-L1",
+   "scope": "reversal",
+   "value_path": [
+    "minimum_tie",
+    "distance_l1"
+   ],
+   "count_path": null,
+   "paper_location": "Section 6.2; Appendix B",
+   "source_files": [
+    "experiments/sensitivity/results/reversal_distance.json"
+   ],
+   "metric_definition": "minimum L1 composition distance over g(w) == 0",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 0.121979,
+   "numeric_tolerance": 1e-06,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "REV-TIE-GAP",
+   "scope": "reversal",
+   "value_path": [
+    "minimum_tie",
+    "gap_pp"
+   ],
+   "count_path": null,
+   "paper_location": "Section 6.2; Appendix B",
+   "source_files": [
+    "experiments/sensitivity/results/reversal_distance.json"
+   ],
+   "metric_definition": "tool_filter minus pi_detector gap at the exact tie",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 0.0,
+   "numeric_tolerance": 1e-12,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "REV-STRICT-L1",
+   "scope": "reversal",
+   "value_path": [
+    "minimum_strict",
+    "distance_l1"
+   ],
+   "count_path": null,
+   "paper_location": "Section 6.2; Appendix B",
+   "source_files": [
+    "experiments/sensitivity/results/reversal_distance.json"
+   ],
+   "metric_definition": "minimum L1 composition distance over g(w) > 0",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 0.10713,
+   "numeric_tolerance": 1e-06,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "REV-STRICT-GAP",
+   "scope": "reversal",
+   "value_path": [
+    "minimum_strict",
+    "gap_pp"
+   ],
+   "count_path": null,
+   "paper_location": "Section 6.2; Appendix B",
+   "source_files": [
+    "experiments/sensitivity/results/reversal_distance.json"
+   ],
+   "metric_definition": "tool_filter minus pi_detector gap at the strict crossing",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 0.010565,
+   "numeric_tolerance": 1e-06,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "POWER-OBSERVED",
+   "scope": "power",
+   "value_path": [
+    "observed_power"
+   ],
+   "count_path": null,
+   "paper_location": "Appendix B",
+   "source_files": [
+    "experiments/statistics/results/power.json"
+   ],
+   "metric_definition": "exact McNemar power at the observed discordance",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 0.081,
+   "numeric_tolerance": 0.0005,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "POWER-MIN-P",
+   "scope": "power",
+   "value_path": [
+    "minimum_two_sided_p_m3"
+   ],
+   "count_path": null,
+   "paper_location": "Appendix B",
+   "source_files": [
+    "experiments/statistics/results/power.json"
+   ],
+   "metric_definition": "minimum attainable two-sided p at m=3",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 0.25,
+   "numeric_tolerance": 1e-12,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "POWER-MDE-010",
+   "scope": "power",
+   "value_path": [
+    "mde_pp",
+    "q_0.10"
+   ],
+   "count_path": null,
+   "paper_location": "Appendix B",
+   "source_files": [
+    "experiments/statistics/results/power.json"
+   ],
+   "metric_definition": "80 percent MDE at q=0.10",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 8.97,
+   "numeric_tolerance": 0.005,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "POWER-MDE-020",
+   "scope": "power",
+   "value_path": [
+    "mde_pp",
+    "q_0.20"
+   ],
+   "count_path": null,
+   "paper_location": "Appendix B",
+   "source_files": [
+    "experiments/statistics/results/power.json"
+   ],
+   "metric_definition": "80 percent MDE at q=0.20",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 12.95,
+   "numeric_tolerance": 0.005,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "FLIP-TOTAL",
+   "scope": "flips",
+   "value_path": [
+    "flips"
+   ],
+   "count_path": null,
+   "paper_location": "Section 6.3; Appendix C",
+   "source_files": [
+    "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b-v041/attribution.json"
+   ],
+   "metric_definition": "paired security flips",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 15,
+   "numeric_tolerance": 0,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "FLIP-CONCORDANT",
+   "scope": "flips",
+   "value_path": [
+    "classes",
+    "gate_consistent"
+   ],
+   "count_path": null,
+   "paper_location": "Section 6.3; Appendix C",
+   "source_files": [
+    "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b-v041/attribution.json"
+   ],
+   "metric_definition": "flips with a concordant gate-side record",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 6,
+   "numeric_tolerance": 0,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "FLIP-ZERO",
+   "scope": "flips",
+   "value_path": [
+    "classes",
+    "zero_intervention"
+   ],
+   "count_path": null,
+   "paper_location": "Section 6.3; Appendix C",
+   "source_files": [
+    "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b-v041/attribution.json"
+   ],
+   "metric_definition": "flips with a zero-intervention record",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 3,
+   "numeric_tolerance": 0,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "FLIP-UNRECORDED",
+   "scope": "flips",
+   "value_path": [
+    "classes",
+    "unrecorded"
+   ],
+   "count_path": null,
+   "paper_location": "Section 6.3; Appendix C",
+   "source_files": [
+    "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b-v041/attribution.json"
+   ],
+   "metric_definition": "flips with no gate-side record",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 6,
+   "numeric_tolerance": 0,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "FLIP-BOUND-LOW",
+   "scope": "flips",
+   "value_path": [
+    "bound",
+    0
+   ],
+   "count_path": null,
+   "paper_location": "Section 6.3; Appendix C",
+   "source_files": [
+    "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b-v041/attribution.json"
+   ],
+   "metric_definition": "lower bound on concordant flips",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 6,
+   "numeric_tolerance": 0,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "FLIP-BOUND-HIGH",
+   "scope": "flips",
+   "value_path": [
+    "bound",
+    1
+   ],
+   "count_path": null,
+   "paper_location": "Section 6.3; Appendix C",
+   "source_files": [
+    "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b-v041/attribution.json"
+   ],
+   "metric_definition": "upper bound on concordant flips",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 12,
+   "numeric_tolerance": 0,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S2-CELLS",
+   "scope": "study2",
+   "value_path": [
+    "cells"
+   ],
+   "count_path": null,
+   "paper_location": "Section 6.1; Appendix C",
+   "source_files": [
+    "benchmark/results/external_validity_agentdojo.json",
+    "public AgentDojo run tree"
+   ],
+   "metric_definition": "paired AgentDojo cells",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 629,
+   "numeric_tolerance": 0,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S2-ASR-NONE",
+   "scope": "study2",
+   "value_path": [
+    "census_asr_pct",
+    "none"
+   ],
+   "count_path": [
+    "census_asr_counts",
+    "none"
+   ],
+   "paper_location": "Section 6.1; Appendix C",
+   "source_files": [
+    "benchmark/results/external_validity_agentdojo.json",
+    "public AgentDojo run tree"
+   ],
+   "metric_definition": "targeted attack success / paired cells",
+   "expected_count": 300,
+   "expected_denominator": 629,
+   "expected_value": 47.695,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S2-UTIL-NONE",
+   "scope": "study2",
+   "value_path": [
+    "census_utility_pct",
+    "none"
+   ],
+   "count_path": [
+    "census_utility_counts",
+    "none"
+   ],
+   "paper_location": "Section 6.1; Appendix C",
+   "source_files": [
+    "benchmark/results/external_validity_agentdojo.json",
+    "public AgentDojo run tree"
+   ],
+   "metric_definition": "grader-judged task success / paired cells",
+   "expected_count": 315,
+   "expected_denominator": 629,
+   "expected_value": 50.079,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S2-ASR-TOOL-FILTER",
+   "scope": "study2",
+   "value_path": [
+    "census_asr_pct",
+    "tool_filter"
+   ],
+   "count_path": [
+    "census_asr_counts",
+    "tool_filter"
+   ],
+   "paper_location": "Section 6.1; Appendix C",
+   "source_files": [
+    "benchmark/results/external_validity_agentdojo.json",
+    "public AgentDojo run tree"
+   ],
+   "metric_definition": "targeted attack success / paired cells",
+   "expected_count": 43,
+   "expected_denominator": 629,
+   "expected_value": 6.836,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S2-UTIL-TOOL-FILTER",
+   "scope": "study2",
+   "value_path": [
+    "census_utility_pct",
+    "tool_filter"
+   ],
+   "count_path": [
+    "census_utility_counts",
+    "tool_filter"
+   ],
+   "paper_location": "Section 6.1; Appendix C",
+   "source_files": [
+    "benchmark/results/external_validity_agentdojo.json",
+    "public AgentDojo run tree"
+   ],
+   "metric_definition": "grader-judged task success / paired cells",
+   "expected_count": 354,
+   "expected_denominator": 629,
+   "expected_value": 56.28,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S2-ASR-SPOTLIGHTING",
+   "scope": "study2",
+   "value_path": [
+    "census_asr_pct",
+    "spotlighting"
+   ],
+   "count_path": [
+    "census_asr_counts",
+    "spotlighting"
+   ],
+   "paper_location": "Section 6.1; Appendix C",
+   "source_files": [
+    "benchmark/results/external_validity_agentdojo.json",
+    "public AgentDojo run tree"
+   ],
+   "metric_definition": "targeted attack success / paired cells",
+   "expected_count": 262,
+   "expected_denominator": 629,
+   "expected_value": 41.653,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S2-UTIL-SPOTLIGHTING",
+   "scope": "study2",
+   "value_path": [
+    "census_utility_pct",
+    "spotlighting"
+   ],
+   "count_path": [
+    "census_utility_counts",
+    "spotlighting"
+   ],
+   "paper_location": "Section 6.1; Appendix C",
+   "source_files": [
+    "benchmark/results/external_validity_agentdojo.json",
+    "public AgentDojo run tree"
+   ],
+   "metric_definition": "grader-judged task success / paired cells",
+   "expected_count": 350,
+   "expected_denominator": 629,
+   "expected_value": 55.644,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S2-ASR-PI-DETECTOR",
+   "scope": "study2",
+   "value_path": [
+    "census_asr_pct",
+    "pi_detector"
+   ],
+   "count_path": [
+    "census_asr_counts",
+    "pi_detector"
+   ],
+   "paper_location": "Section 6.1; Appendix C",
+   "source_files": [
+    "benchmark/results/external_validity_agentdojo.json",
+    "public AgentDojo run tree"
+   ],
+   "metric_definition": "targeted attack success / paired cells",
+   "expected_count": 50,
+   "expected_denominator": 629,
+   "expected_value": 7.949,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S2-UTIL-PI-DETECTOR",
+   "scope": "study2",
+   "value_path": [
+    "census_utility_pct",
+    "pi_detector"
+   ],
+   "count_path": [
+    "census_utility_counts",
+    "pi_detector"
+   ],
+   "paper_location": "Section 6.1; Appendix C",
+   "source_files": [
+    "benchmark/results/external_validity_agentdojo.json",
+    "public AgentDojo run tree"
+   ],
+   "metric_definition": "grader-judged task success / paired cells",
+   "expected_count": 133,
+   "expected_denominator": 629,
+   "expected_value": 21.145,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S2-ASR-REPEAT-USER-PROMPT",
+   "scope": "study2",
+   "value_path": [
+    "census_asr_pct",
+    "repeat_user_prompt"
+   ],
+   "count_path": [
+    "census_asr_counts",
+    "repeat_user_prompt"
+   ],
+   "paper_location": "Section 6.1; Appendix C",
+   "source_files": [
+    "benchmark/results/external_validity_agentdojo.json",
+    "public AgentDojo run tree"
+   ],
+   "metric_definition": "targeted attack success / paired cells",
+   "expected_count": 175,
+   "expected_denominator": 629,
+   "expected_value": 27.822,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S2-UTIL-REPEAT-USER-PROMPT",
+   "scope": "study2",
+   "value_path": [
+    "census_utility_pct",
+    "repeat_user_prompt"
+   ],
+   "count_path": [
+    "census_utility_counts",
+    "repeat_user_prompt"
+   ],
+   "paper_location": "Section 6.1; Appendix C",
+   "source_files": [
+    "benchmark/results/external_validity_agentdojo.json",
+    "public AgentDojo run tree"
+   ],
+   "metric_definition": "grader-judged task success / paired cells",
+   "expected_count": 423,
+   "expected_denominator": 629,
+   "expected_value": 67.25,
+   "numeric_tolerance": 0.0001,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S2-PREFIX-GAP",
+   "scope": "study2",
+   "value_path": [
+    "prefix_tool_minus_pi_pp"
+   ],
+   "count_path": null,
+   "paper_location": "Section 6.3; Appendix C",
+   "source_files": [
+    "benchmark/results/external_validity_agentdojo.json",
+    "public AgentDojo run tree"
+   ],
+   "metric_definition": "tool_filter minus pi_detector ASR in the 400-cell prefix",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 4.25,
+   "numeric_tolerance": 1e-09,
+   "verification_status": "verified"
+  },
+  {
+   "claim_id": "S2-BANKING-GAP",
+   "scope": "study2",
+   "value_path": [
+    "banking_tool_minus_pi_pp"
+   ],
+   "count_path": null,
+   "paper_location": "Section 6.3; Appendix C",
+   "source_files": [
+    "benchmark/results/external_validity_agentdojo.json",
+    "public AgentDojo run tree"
+   ],
+   "metric_definition": "tool_filter minus pi_detector ASR on the banking suite",
+   "expected_count": null,
+   "expected_denominator": null,
+   "expected_value": 10.417,
+   "numeric_tolerance": 1e-09,
+   "verification_status": "verified"
+  }
+ ]
+}

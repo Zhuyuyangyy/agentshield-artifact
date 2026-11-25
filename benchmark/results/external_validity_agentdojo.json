@@ -1,0 +1,703 @@
+{
+ "artifact": {
+  "records": 12890,
+  "bytes": 135758439,
+  "top_level_keys": {
+   "agentdojo_package_version": 2979,
+   "attack_type": 12890,
+   "benchmark_version": 2979,
+   "duration": 12890,
+   "error": 12890,
+   "evaluation_timestamp": 2979,
+   "injection_task_id": 12890,
+   "injections": 12890,
+   "messages": 12890,
+   "pipeline_name": 12890,
+   "security": 12890,
+   "suite_name": 12890,
+   "user_task_id": 12890,
+   "utility": 12890
+  },
+  "decision_field_occurrences": {
+   "decision": 0,
+   "action": 0,
+   "gate": 0,
+   "review": 0,
+   "blocked": 0,
+   "intervention": 0,
+   "risk_score": 0,
+   "verdict": 0
+  },
+  "inventory": {
+   "Meta-SecAlign-70B": {
+    "files": 2979,
+    "utility_cells": 97,
+    "trivial_utility_cells": 35,
+    "utility_rate_corrected": 0.7732,
+    "utility_rate_naive": 0.7576,
+    "security_cells": {
+     "direct": 949,
+     "ignore_previous": 949,
+     "important_instructions": 949
+    },
+    "suites": {
+     "banking": 457,
+     "slack": 341,
+     "travel": 447,
+     "workspace": 1734
+    },
+    "benchmark_versions": {
+     "v1.2.1": 2979
+    },
+    "package_versions": {
+     "unknown": 2979
+    },
+    "pipeline_names": {
+     "local": 2979
+    },
+    "errors": 0
+   },
+   "gpt-4o-2024-05-13": {
+    "files": 6899,
+    "utility_cells": 97,
+    "trivial_utility_cells": 27,
+    "utility_rate_corrected": 0.6907,
+    "utility_rate_naive": 0.7258,
+    "security_cells": {
+     "captcha_dos": 97,
+     "direct": 629,
+     "dos": 97,
+     "felony_dos": 97,
+     "ignore_previous": 629,
+     "important_instructions": 629,
+     "important_instructions_no_model_name": 629,
+     "important_instructions_no_names": 629,
+     "important_instructions_no_user_name": 629,
+     "important_instructions_wrong_model_name": 629,
+     "important_instructions_wrong_user_name": 629,
+     "injecagent": 629,
+     "offensive_email_dos": 97,
+     "swearwords_dos": 97,
+     "tool_knowledge": 629
+    },
+    "suites": {
+     "banking": 1545,
+     "slack": 1181,
+     "travel": 1527,
+     "workspace": 2646
+    },
+    "benchmark_versions": {
+     "None": 6899
+    },
+    "package_versions": {
+     "None": 6899
+    },
+    "pipeline_names": {
+     "gpt-4o-2024-05-13": 6899
+    },
+    "errors": 0
+   },
+   "gpt-4o-2024-05-13-repeat_user_prompt": {
+    "files": 753,
+    "utility_cells": 97,
+    "trivial_utility_cells": 27,
+    "utility_rate_corrected": 0.8454,
+    "utility_rate_naive": 0.8548,
+    "security_cells": {
+     "important_instructions": 629
+    },
+    "suites": {
+     "banking": 169,
+     "slack": 131,
+     "travel": 167,
+     "workspace": 286
+    },
+    "benchmark_versions": {
+     "None": 753
+    },
+    "package_versions": {
+     "None": 753
+    },
+    "pipeline_names": {
+     "gpt-4o-2024-05-13-repeat_user_prompt": 753
+    },
+    "errors": 0
+   },
+   "gpt-4o-2024-05-13-spotlighting_with_delimiting": {
+    "files": 753,
+    "utility_cells": 97,
+    "trivial_utility_cells": 27,
+    "utility_rate_corrected": 0.7216,
+    "utility_rate_naive": 0.75,
+    "security_cells": {
+     "important_instructions": 629
+    },
+    "suites": {
+     "banking": 169,
+     "slack": 131,
+     "travel": 167,
+     "workspace": 286
+    },
+    "benchmark_versions": {
+     "None": 753
+    },
+    "package_versions": {
+     "None": 753
+    },
+    "pipeline_names": {
+     "gpt-4o-2024-05-13-spotlighting_with_delimiting": 753
+    },
+    "errors": 0
+   },
+   "gpt-4o-2024-05-13-tool_filter": {
+    "files": 753,
+    "utility_cells": 97,
+    "trivial_utility_cells": 27,
+    "utility_rate_corrected": 0.7216,
+    "utility_rate_naive": 0.7177,
+    "security_cells": {
+     "important_instructions": 629
+    },
+    "suites": {
+     "banking": 169,
+     "slack": 131,
+     "travel": 167,
+     "workspace": 286
+    },
+    "benchmark_versions": {
+     "None": 753
+    },
+    "package_versions": {
+     "None": 753
+    },
+    "pipeline_names": {
+     "gpt-4o-2024-05-13-tool_filter": 753
+    },
+    "errors": 0
+   },
+   "gpt-4o-2024-05-13-transformers_pi_detector": {
+    "files": 753,
+    "utility_cells": 97,
+    "trivial_utility_cells": 27,
+    "utility_rate_corrected": 0.4124,
+    "utility_rate_naive": 0.4194,
+    "security_cells": {
+     "important_instructions": 629
+    },
+    "suites": {
+     "banking": 169,
+     "slack": 131,
+     "travel": 167,
+     "workspace": 286
+    },
+    "benchmark_versions": {
+     "None": 753
+    },
+    "package_versions": {
+     "None": 753
+    },
+    "pipeline_names": {
+     "gpt-4o-2024-05-13-transformers_pi_detector": 753
+    },
+    "errors": 0
+   }
+  }
+ },
+ "parameters": {
+  "seed": 20261123,
+  "bootstrap_draws": 2000,
+  "random_draws": 2000,
+  "subset_size": 400,
+  "focus_attack": "important_instructions"
+ },
+ "paired_frame": {
+  "n": 629,
+  "per_suite": {
+   "banking": 144,
+   "slack": 105,
+   "travel": 140,
+   "workspace": 240
+  },
+  "attacks_defended": [
+   "important_instructions"
+  ]
+ },
+ "reproduction": {
+  "rows": [
+   {
+    "arm": "none",
+    "attack": "important_instructions",
+    "n": 629,
+    "published_utility_under_attack_pct": 50.08,
+    "recomputed_utility_under_attack_pct": 50.079,
+    "published_targeted_asr_pct": 47.69,
+    "recomputed_targeted_asr_pct": 47.695,
+    "utility_match": true,
+    "asr_match": true
+   },
+   {
+    "arm": "none",
+    "attack": "ignore_previous",
+    "n": 629,
+    "published_utility_under_attack_pct": 66.77,
+    "recomputed_utility_under_attack_pct": 66.773,
+    "published_targeted_asr_pct": 5.41,
+    "recomputed_targeted_asr_pct": 5.405,
+    "utility_match": true,
+    "asr_match": true
+   },
+   {
+    "arm": "none",
+    "attack": "direct",
+    "n": 629,
+    "published_utility_under_attack_pct": 67.25,
+    "recomputed_utility_under_attack_pct": 67.25,
+    "published_targeted_asr_pct": 3.66,
+    "recomputed_targeted_asr_pct": 3.657,
+    "utility_match": true,
+    "asr_match": true
+   },
+   {
+    "arm": "none",
+    "attack": "injecagent",
+    "n": 629,
+    "published_utility_under_attack_pct": 68.52,
+    "recomputed_utility_under_attack_pct": 68.521,
+    "published_targeted_asr_pct": 5.72,
+    "recomputed_targeted_asr_pct": 5.723,
+    "utility_match": true,
+    "asr_match": true
+   },
+   {
+    "arm": "none",
+    "attack": "tool_knowledge",
+    "n": 629,
+    "published_utility_under_attack_pct": 57.71,
+    "recomputed_utility_under_attack_pct": 57.711,
+    "published_targeted_asr_pct": 34.5,
+    "recomputed_targeted_asr_pct": 34.499,
+    "utility_match": true,
+    "asr_match": true
+   },
+   {
+    "arm": "tool_filter",
+    "attack": "important_instructions",
+    "n": 629,
+    "published_utility_under_attack_pct": 56.28,
+    "recomputed_utility_under_attack_pct": 56.28,
+    "published_targeted_asr_pct": 6.84,
+    "recomputed_targeted_asr_pct": 6.836,
+    "utility_match": true,
+    "asr_match": true
+   },
+   {
+    "arm": "spotlighting",
+    "attack": "important_instructions",
+    "n": 629,
+    "published_utility_under_attack_pct": 55.64,
+    "recomputed_utility_under_attack_pct": 55.644,
+    "published_targeted_asr_pct": 41.65,
+    "recomputed_targeted_asr_pct": 41.653,
+    "utility_match": true,
+    "asr_match": true
+   },
+   {
+    "arm": "pi_detector",
+    "attack": "important_instructions",
+    "n": 629,
+    "published_utility_under_attack_pct": 21.14,
+    "recomputed_utility_under_attack_pct": 21.145,
+    "published_targeted_asr_pct": 7.95,
+    "recomputed_targeted_asr_pct": 7.949,
+    "utility_match": true,
+    "asr_match": true
+   },
+   {
+    "arm": "repeat_user_prompt",
+    "attack": "important_instructions",
+    "n": 629,
+    "published_utility_under_attack_pct": 67.25,
+    "recomputed_utility_under_attack_pct": 67.25,
+    "published_targeted_asr_pct": 27.82,
+    "recomputed_targeted_asr_pct": 27.822,
+    "utility_match": true,
+    "asr_match": true
+   }
+  ],
+  "rows_checked": 9,
+  "rows_matching": 9,
+  "clean_utility": {
+   "none": {
+    "n": 97,
+    "recomputed_pct": 69.072,
+    "published_pct": 69.07,
+    "naive_including_injection_task_baselines_pct": 72.58,
+    "match": true,
+    "corrected_delta_vs_none_pp": 0.0,
+    "naive_delta_vs_none_pp": 0.0
+   },
+   "tool_filter": {
+    "n": 97,
+    "recomputed_pct": 72.165,
+    "published_pct": 72.16,
+    "naive_including_injection_task_baselines_pct": 71.77,
+    "match": true,
+    "corrected_delta_vs_none_pp": 3.093,
+    "naive_delta_vs_none_pp": -0.81
+   },
+   "spotlighting": {
+    "n": 97,
+    "recomputed_pct": 72.165,
+    "published_pct": 72.16,
+    "naive_including_injection_task_baselines_pct": 75.0,
+    "match": true,
+    "corrected_delta_vs_none_pp": 3.093,
+    "naive_delta_vs_none_pp": 2.42
+   },
+   "pi_detector": {
+    "n": 97,
+    "recomputed_pct": 41.237,
+    "published_pct": 41.24,
+    "naive_including_injection_task_baselines_pct": 41.94,
+    "match": true,
+    "corrected_delta_vs_none_pp": -27.835,
+    "naive_delta_vs_none_pp": -30.64
+   },
+   "repeat_user_prompt": {
+    "n": 97,
+    "recomputed_pct": 84.536,
+    "published_pct": 84.54,
+    "naive_including_injection_task_baselines_pct": 85.48,
+    "match": true,
+    "corrected_delta_vs_none_pp": 15.464,
+    "naive_delta_vs_none_pp": 12.9
+   }
+  }
+ },
+ "frames": {
+  "full_paired": {
+   "n": 629,
+   "asr_pct": {
+    "gpt-4o-2024-05-13": 47.695,
+    "gpt-4o-2024-05-13-tool_filter": 6.836,
+    "gpt-4o-2024-05-13-spotlighting_with_delimiting": 41.653,
+    "gpt-4o-2024-05-13-transformers_pi_detector": 7.949,
+    "gpt-4o-2024-05-13-repeat_user_prompt": 27.822
+   },
+   "utility_under_attack_pct": {
+    "gpt-4o-2024-05-13": 50.079,
+    "gpt-4o-2024-05-13-tool_filter": 56.28,
+    "gpt-4o-2024-05-13-spotlighting_with_delimiting": 55.644,
+    "gpt-4o-2024-05-13-transformers_pi_detector": 21.145,
+    "gpt-4o-2024-05-13-repeat_user_prompt": 67.25
+   }
+  },
+  "prefix_400": {
+   "n": 400,
+   "asr_pct": {
+    "gpt-4o-2024-05-13": 53.25,
+    "gpt-4o-2024-05-13-tool_filter": 8.25,
+    "gpt-4o-2024-05-13-spotlighting_with_delimiting": 46.5,
+    "gpt-4o-2024-05-13-transformers_pi_detector": 4.0,
+    "gpt-4o-2024-05-13-repeat_user_prompt": 35.75
+   },
+   "utility_under_attack_pct": {
+    "gpt-4o-2024-05-13": 64.5,
+    "gpt-4o-2024-05-13-tool_filter": 58.75,
+    "gpt-4o-2024-05-13-spotlighting_with_delimiting": 70.0,
+    "gpt-4o-2024-05-13-transformers_pi_detector": 24.0,
+    "gpt-4o-2024-05-13-repeat_user_prompt": 71.5
+   },
+   "suites": {
+    "banking": 144,
+    "slack": 105,
+    "travel": 140,
+    "workspace": 11
+   }
+  },
+  "random_400": {
+   "draws": 2000,
+   "subset": 400,
+   "arms": {
+    "none": {
+     "median_pct": 47.5,
+     "p05_pct": 45.25,
+     "p95_pct": 50.25,
+     "prefix_pct": 53.25,
+     "prefix_percentile_rank": 1.0
+    },
+    "tool_filter": {
+     "median_pct": 7.0,
+     "p05_pct": 5.5,
+     "p95_pct": 8.0,
+     "prefix_pct": 8.25,
+     "prefix_percentile_rank": 0.979
+    },
+    "spotlighting": {
+     "median_pct": 41.5,
+     "p05_pct": 39.25,
+     "p95_pct": 44.0,
+     "prefix_pct": 46.5,
+     "prefix_percentile_rank": 0.999
+    },
+    "pi_detector": {
+     "median_pct": 8.0,
+     "p05_pct": 6.5,
+     "p95_pct": 9.25,
+     "prefix_pct": 4.0,
+     "prefix_percentile_rank": 0.0
+    },
+    "repeat_user_prompt": {
+     "median_pct": 27.75,
+     "p05_pct": 25.5,
+     "p95_pct": 30.0,
+     "prefix_pct": 35.75,
+     "prefix_percentile_rank": 1.0
+    }
+   }
+  },
+  "suites": {
+   "banking": {
+    "n": 144,
+    "asr_pct": {
+     "gpt-4o-2024-05-13": 62.5,
+     "gpt-4o-2024-05-13-tool_filter": 11.111,
+     "gpt-4o-2024-05-13-spotlighting_with_delimiting": 61.806,
+     "gpt-4o-2024-05-13-transformers_pi_detector": 0.694,
+     "gpt-4o-2024-05-13-repeat_user_prompt": 46.528
+    },
+    "utility_under_attack_pct": {
+     "gpt-4o-2024-05-13": 69.444,
+     "gpt-4o-2024-05-13-tool_filter": 56.944,
+     "gpt-4o-2024-05-13-spotlighting_with_delimiting": 77.083,
+     "gpt-4o-2024-05-13-transformers_pi_detector": 31.25,
+     "gpt-4o-2024-05-13-repeat_user_prompt": 77.083
+    }
+   },
+   "slack": {
+    "n": 105,
+    "asr_pct": {
+     "gpt-4o-2024-05-13": 92.381,
+     "gpt-4o-2024-05-13-tool_filter": 8.571,
+     "gpt-4o-2024-05-13-spotlighting_with_delimiting": 80.0,
+     "gpt-4o-2024-05-13-transformers_pi_detector": 12.381,
+     "gpt-4o-2024-05-13-repeat_user_prompt": 60.0
+    },
+    "utility_under_attack_pct": {
+     "gpt-4o-2024-05-13": 63.81,
+     "gpt-4o-2024-05-13-tool_filter": 47.619,
+     "gpt-4o-2024-05-13-spotlighting_with_delimiting": 61.905,
+     "gpt-4o-2024-05-13-transformers_pi_detector": 25.714,
+     "gpt-4o-2024-05-13-repeat_user_prompt": 62.857
+    }
+   },
+   "travel": {
+    "n": 140,
+    "asr_pct": {
+     "gpt-4o-2024-05-13": 11.429,
+     "gpt-4o-2024-05-13-tool_filter": 5.714,
+     "gpt-4o-2024-05-13-spotlighting_with_delimiting": 3.571,
+     "gpt-4o-2024-05-13-transformers_pi_detector": 0.0,
+     "gpt-4o-2024-05-13-repeat_user_prompt": 7.143
+    },
+    "utility_under_attack_pct": {
+     "gpt-4o-2024-05-13": 64.286,
+     "gpt-4o-2024-05-13-tool_filter": 70.0,
+     "gpt-4o-2024-05-13-spotlighting_with_delimiting": 72.143,
+     "gpt-4o-2024-05-13-transformers_pi_detector": 16.429,
+     "gpt-4o-2024-05-13-repeat_user_prompt": 72.143
+    }
+   },
+   "workspace": {
+    "n": 240,
+    "asr_pct": {
+     "gpt-4o-2024-05-13": 40.417,
+     "gpt-4o-2024-05-13-tool_filter": 4.167,
+     "gpt-4o-2024-05-13-spotlighting_with_delimiting": 35.0,
+     "gpt-4o-2024-05-13-transformers_pi_detector": 15.0,
+     "gpt-4o-2024-05-13-repeat_user_prompt": 14.583
+    },
+    "utility_under_attack_pct": {
+     "gpt-4o-2024-05-13": 24.167,
+     "gpt-4o-2024-05-13-tool_filter": 51.667,
+     "gpt-4o-2024-05-13-spotlighting_with_delimiting": 30.417,
+     "gpt-4o-2024-05-13-transformers_pi_detector": 15.833,
+     "gpt-4o-2024-05-13-repeat_user_prompt": 60.417
+    }
+   }
+  }
+ },
+ "rankings": {
+  "by_targeted_asr_asc": {
+   "full_paired": [
+    "tool_filter",
+    "pi_detector",
+    "repeat_user_prompt",
+    "spotlighting",
+    "none"
+   ],
+   "prefix_400": [
+    "pi_detector",
+    "tool_filter",
+    "repeat_user_prompt",
+    "spotlighting",
+    "none"
+   ],
+   "banking": [
+    "pi_detector",
+    "tool_filter",
+    "repeat_user_prompt",
+    "spotlighting",
+    "none"
+   ],
+   "random_400_best_counts": {
+    "tool_filter": 1770,
+    "pi_detector": 230
+   },
+   "random_400_top2_flip_rate": 0.115
+  }
+ },
+ "contrasts": {
+  "tool_filter_minus_pi_detector": {
+   "delta_pp": -1.113,
+   "ci95_pp": [
+    -3.498,
+    1.431
+   ]
+  },
+  "tool_filter_minus_none": {
+   "delta_pp": -40.859,
+   "ci95_pp": [
+    -44.992,
+    -36.725
+   ]
+  },
+  "pi_detector_minus_none": {
+   "delta_pp": -39.746,
+   "ci95_pp": [
+    -43.72,
+    -35.93
+   ]
+  },
+  "repeat_user_prompt_minus_none": {
+   "delta_pp": -19.873,
+   "ci95_pp": [
+    -23.529,
+    -16.375
+   ]
+  },
+  "spotlighting_minus_none": {
+   "delta_pp": -6.041,
+   "ci95_pp": [
+    -8.744,
+    -3.339
+   ]
+  }
+ },
+ "pairing": {
+  "pair": "tool_filter_minus_pi_detector",
+  "paired_reversal_rate": 0.112,
+  "paired_gap_sd_pp": 1.015,
+  "independent_reversal_rate": 0.138,
+  "independent_gap_sd_pp": 1.142
+ },
+ "aggregation_unit": {
+  "pooled_cell_mean_pct": 28.576,
+  "macro_mean_over_attacks_pct": 30.46,
+  "non_dos_macro_pct": 28.06,
+  "dos_macro_pct": 35.258,
+  "per_attack_pct": {
+   "captcha_dos": 38.144,
+   "direct": 3.657,
+   "dos": 32.99,
+   "felony_dos": 36.082,
+   "ignore_previous": 5.405,
+   "important_instructions": 47.695,
+   "important_instructions_no_model_name": 46.105,
+   "important_instructions_no_names": 45.787,
+   "important_instructions_no_user_name": 44.833,
+   "important_instructions_wrong_model_name": 23.688,
+   "important_instructions_wrong_user_name": 23.211,
+   "injecagent": 5.723,
+   "offensive_email_dos": 37.113,
+   "swearwords_dos": 31.959,
+   "tool_knowledge": 34.499
+  },
+  "note": "metric-aggregation unit only; not the gate risk rule of RQ2"
+ },
+ "mixed_frame_example": {
+  "tool_filter": {
+   "delta_vs_matched_none_pp": -40.859,
+   "delta_vs_pooled_all_attack_none_pp": -21.739
+  },
+  "spotlighting": {
+   "delta_vs_matched_none_pp": -6.041,
+   "delta_vs_pooled_all_attack_none_pp": 13.078
+  },
+  "pi_detector": {
+   "delta_vs_matched_none_pp": -39.746,
+   "delta_vs_pooled_all_attack_none_pp": -20.627
+  },
+  "repeat_user_prompt": {
+   "delta_vs_matched_none_pp": -19.873,
+   "delta_vs_pooled_all_attack_none_pp": -0.754
+  }
+ },
+ "not_evaluable": {
+  "enforcement_semantics": "no per-step gate decision, REVIEW state or risk score in any file",
+  "aggregation_rule": "no risk-signal aggregation exists; only metric aggregation is observable",
+  "gate_attribution": "outcome booleans only; attribution_source is structurally outcome_only"
+ },
+ "not_measured": [
+  "end-to-end ASR under a gate",
+  "utility under governance",
+  "task success after a block",
+  "gate-side intervention records"
+ ],
+ "environment": {
+  "python": "3.14.7"
+ },
+ "source": {
+  "repo": "<agentdojo-repo>",
+  "runs_root": ".tmp/agentdojo/runs",
+  "artifact_commit": "089ed468cf3ed0322acc66b0211f26d9d90dbf60",
+  "published_table": {
+   "url": "<published-results-table>",
+   "sha256": "bdd665fd32069666d3d89e2f54a9b6c12a38798f0e3824b5fe5b6488021d0925"
+  }
+ },
+ "second_run": {
+  "present": true,
+  "cells_per_attack": {
+   "direct": 949,
+   "ignore_previous": 949,
+   "important_instructions": 949
+  },
+  "benchmark_versions": {
+   "v1.2.1|unknown": 2979
+  },
+  "pipeline_names": {
+   "local": 2979
+  },
+  "suites": {
+   "banking": {
+    "user_tasks": 16,
+    "injection_tasks": 9
+   },
+   "slack": {
+    "user_tasks": 21,
+    "injection_tasks": 5
+   },
+   "travel": {
+    "user_tasks": 20,
+    "injection_tasks": 7
+   },
+   "workspace": {
+    "user_tasks": 40,
+    "injection_tasks": 14
+   }
+  },
+  "poolable_with_gpt4o_arms": false,
+  "reason": "different task-suite version: workspace carries 14 injection tasks instead of 6, so the security denominators are 949 rather than 629"
+ }
+}
