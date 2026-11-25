@@ -1,0 +1,169 @@
+{
+  "experiment": "statistical_hardening",
+  "tier": "offline_control_experiment",
+  "asr_measured": false,
+  "utility_measured": false,
+  "measured_over_traffic": false,
+  "mode": "audit",
+  "preregistration": {
+    "path": "docs/superpowers/specs/2026-09-29-statistical-hardening.md",
+    "sha256": "e38e270826838f754fa5e1a86b570cf9b5eed2eb9ce1c8988e2441abdfdd85de",
+    "amendment": "spec section 9 (seed-stability scope, invariant I7), committed before execution"
+  },
+  "harness": {
+    "path": "benchmark/statistical_hardening.py",
+    "sha256": "b915505e070ab161784549092589bd24ea11c3d531f8e9d7ac29eb0870fd6f89"
+  },
+  "canonical_reference": {
+    "path": "benchmark/results/v0_4_trust_pareto.json",
+    "sha256": "9426456393ea4e99f6a15cf3d38b60e2537a2aff98d6143102a2b2bc7f56df5d",
+    "role": "invariant I1 reproduction target"
+  },
+  "estimator_reference": {
+    "path": "benchmark/results/agentdojo_native_trace_replay.json",
+    "sha256": "1247a44b5a80b25210cda98367ec2290ace9f15e042f73ac1b9fcd6f7c1a3f03",
+    "role": "invariant I7 estimator-identity target"
+  },
+  "engine_source_sha256": {
+    "backend/app/shield/v3_engine.py": "fa5d080cf04b6d23bbabd05685e3e81793d0ed9a6fa3dc986281c81463b9428b",
+    "backend/app/shield/risk_signals.py": "b60dc59f297732bfae4c7cf462b931ace2078656a42ba7408da7f16f58751433",
+    "backend/app/shield/provenance_signals.py": "75b43c07b9b10b745601fa6f9862df9be5d3c260aec1c721736316d0c6bb3085",
+    "backend/app/shield/authorization.py": "f6b5ffaf0db2855e56a14b9941af0b0ac6e7b2e69288f9816a0b5de1c68d3d96",
+    "backend/app/shield/intent_slots.py": "f55cad792975802085b07f2b412ec180a382f4c51cced894c2582abe937e9b07",
+    "backend/app/shield/trust_policy.py": "d53ea5c8527df07be6af58f57967b576350e5d2d37b715c508e75773557f0454"
+  },
+  "rung_flags": {
+    "local_only": {
+      "enable_provenance": false,
+      "enable_taint_tracking": true,
+      "enable_trust_policy": false,
+      "use_intent_slots": false,
+      "enable_counterfactual": true,
+      "ignore_user_intent": false,
+      "risk_threshold": 0.7,
+      "max_branches": 5
+    },
+    "plus_output_inspection": {
+      "enable_provenance": true,
+      "enable_taint_tracking": false,
+      "enable_trust_policy": false,
+      "use_intent_slots": false,
+      "enable_counterfactual": true,
+      "ignore_user_intent": false,
+      "risk_threshold": 0.7,
+      "max_branches": 5
+    },
+    "plus_entity_provenance": {
+      "enable_provenance": true,
+      "enable_taint_tracking": true,
+      "enable_trust_policy": false,
+      "use_intent_slots": false,
+      "enable_counterfactual": true,
+      "ignore_user_intent": true,
+      "risk_threshold": 0.7,
+      "max_branches": 5
+    },
+    "plus_intent_consistency": {
+      "enable_provenance": true,
+      "enable_taint_tracking": true,
+      "enable_trust_policy": false,
+      "use_intent_slots": false,
+      "enable_counterfactual": true,
+      "ignore_user_intent": false,
+      "risk_threshold": 0.7,
+      "max_branches": 5
+    },
+    "plus_trust_policy_v0_4": {
+      "enable_provenance": true,
+      "enable_taint_tracking": true,
+      "enable_trust_policy": true,
+      "use_intent_slots": false,
+      "enable_counterfactual": true,
+      "ignore_user_intent": false,
+      "risk_threshold": 0.7,
+      "max_branches": 5
+    },
+    "plus_intent_slots": {
+      "enable_provenance": true,
+      "enable_taint_tracking": true,
+      "enable_trust_policy": true,
+      "use_intent_slots": true,
+      "enable_counterfactual": true,
+      "ignore_user_intent": false,
+      "risk_threshold": 0.7,
+      "max_branches": 5
+    }
+  },
+  "populations": {
+    "FULL": {
+      "benign": 97,
+      "attack": 10439,
+      "total": 10536
+    },
+    "SUBSET": {
+      "benign": 97,
+      "attack": 400,
+      "total": 497
+    }
+  },
+  "parameters": {
+    "block_threshold": 0.9,
+    "review_threshold": 0.6,
+    "bootstrap_iterations": 2000,
+    "bootstrap_seed": 12345,
+    "seed_list": [
+      12345,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "seed_mc_se_criterion_pp": 0.5,
+    "resample_R": 1000,
+    "resample_seed": 20260929,
+    "subset_attack": 400,
+    "threshold_sweep": [
+      "0.80",
+      "0.85",
+      "0.90",
+      "0.95"
+    ],
+    "pairs": [
+      {
+        "id": "P1",
+        "arm_a": "plus_entity_provenance",
+        "arm_b": "plus_trust_policy_v0_4"
+      },
+      {
+        "id": "P2",
+        "arm_a": "plus_output_inspection",
+        "arm_b": "plus_entity_provenance"
+      },
+      {
+        "id": "P3",
+        "arm_a": "plus_trust_policy_v0_4",
+        "arm_b": "plus_intent_slots"
+      },
+      {
+        "id": "P4",
+        "arm_a": "local_only",
+        "arm_b": "plus_output_inspection"
+      }
+    ]
+  }
+}

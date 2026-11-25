@@ -1,0 +1,9 @@
+[
+  {
+    "claim_type": "descriptive",
+    "claim": "The band split blocks 7.51 percent of attack traces",
+    "metric": "attack_trace_block_rate",
+    "value": 0.0751,
+    "tolerance": 0.0001
+  }
+]

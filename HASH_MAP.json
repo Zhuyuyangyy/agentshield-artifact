@@ -1,0 +1,26 @@
+{
+ "note": "Derived result files record the canonical input digest. This map binds it to the digest of the shipped, anonymised copy. Only the fields named in anonymised_fields may differ; every other field, including strings, must be identical. unexpected_differences lists any violation.",
+ "files": {
+  "benchmark/results/external_validity_agentdojo.json": {
+   "canonical_input_sha256": "cc316466ad3ff74e60e507932420e7a77552e8b733f00db9234ed0501668f5a7",
+   "released_input_sha256": "c0222ad4ed6bfb17035dcca2b69f114cedeb59628b8ee06462ed2eeae42c9ce0",
+   "scientific_values_preserved": true,
+   "anonymised_fields": [
+    "repo",
+    "url"
+   ],
+   "unexpected_differences": [],
+   "transformation": "anonymization"
+  },
+  "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b-v041/attribution.json": {
+   "canonical_input_sha256": "57c6c880f01be1915c8a96b0efa4680537c0d567de94ae17c135546850db4415",
+   "released_input_sha256": "7ac87fbdba138e9d23092eab2d849ae604aac8c75d39297dea5d15cc60346d4b",
+   "scientific_values_preserved": true,
+   "anonymised_fields": [
+    "cell_run_id"
+   ],
+   "unexpected_differences": [],
+   "transformation": "anonymization"
+  }
+ }
+}

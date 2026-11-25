@@ -1,0 +1,9 @@
+{
+ "dataset": "ffuuugor/agentdojo-dump",
+ "files": 1,
+ "total_bytes": 50898680,
+ "manifest_sha256": "948b94325ae1c8cfbe41bd205fee46b0f500215559ef5cd97a25c27fcf580049",
+ "rows": 13913,
+ "trajectories": 10536,
+ "excluded_total": 0
+}

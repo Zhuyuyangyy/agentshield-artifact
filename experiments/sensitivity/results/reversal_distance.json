@@ -1,0 +1,258 @@
+{
+ "experiment": "T04 minimum ranking reversal distance",
+ "focus_attack": "important_instructions",
+ "arms": {
+  "A": "gpt-4o-2024-05-13-tool_filter",
+  "B": "gpt-4o-2024-05-13-transformers_pi_detector"
+ },
+ "inputs": {
+  "artifact": "benchmark/results/external_validity_agentdojo.json",
+  "artifact_sha256": "cc316466ad3ff74e60e507932420e7a77552e8b733f00db9234ed0501668f5a7",
+  "sample_size_result": "experiments/statistics/results/sample_size.json"
+ },
+ "population": {
+  "n": 629,
+  "suites": {
+   "banking": {
+    "cells": 144,
+    "user_tasks": 16,
+    "injection_tasks": 9,
+    "tool_filter_successes": 16,
+    "pi_detector_successes": 1,
+    "tool_filter_asr_pct": 11.111,
+    "pi_detector_asr_pct": 0.694,
+    "gap_pp": 10.4167
+   },
+   "slack": {
+    "cells": 105,
+    "user_tasks": 21,
+    "injection_tasks": 5,
+    "tool_filter_successes": 9,
+    "pi_detector_successes": 13,
+    "tool_filter_asr_pct": 8.571,
+    "pi_detector_asr_pct": 12.381,
+    "gap_pp": -3.8095
+   },
+   "travel": {
+    "cells": 140,
+    "user_tasks": 20,
+    "injection_tasks": 7,
+    "tool_filter_successes": 8,
+    "pi_detector_successes": 0,
+    "tool_filter_asr_pct": 5.714,
+    "pi_detector_asr_pct": 0.0,
+    "gap_pp": 5.7143
+   },
+   "workspace": {
+    "cells": 240,
+    "user_tasks": 40,
+    "injection_tasks": 6,
+    "tool_filter_successes": 10,
+    "pi_detector_successes": 36,
+    "tool_filter_asr_pct": 4.167,
+    "pi_detector_asr_pct": 15.0,
+    "gap_pp": -10.8333
+   }
+  }
+ },
+ "metric": {
+  "frame_size": 400,
+  "weights": "w_s = k_s / 400 for the frame's suite counts k",
+  "composition_gap_pp": "g(w) = E[Delta_hat | w] = sum_s w_s * (ASR_tool_s - ASR_pi_s), with suite rates fixed at their census values and uniform sampling within each suite",
+  "distance_l1": "sum_s |w_s - n_s/629|; total variation is half this value",
+  "crossing": "min L1 over g(w) >= 0; a composition-predicted tie or reversal",
+  "tie": "min L1 over g(w) == 0",
+  "strict": "min L1 over g(w) > 0",
+  "scope": "composition-induced distance, not the minimum over realised 400-cell subsets; within-suite task selection also moves ASR"
+ },
+ "census": {
+  "weights": {
+   "banking": 0.228935,
+   "slack": 0.166932,
+   "travel": 0.222576,
+   "workspace": 0.381558
+  },
+  "gap_pp": -1.112878,
+  "ordering": [
+   "tool_filter",
+   "pi_detector"
+  ]
+ },
+ "constructed_prefix": {
+  "n": 400,
+  "counts": {
+   "banking": 144,
+   "slack": 105,
+   "travel": 140,
+   "workspace": 11
+  },
+  "weights": {
+   "banking": 0.36,
+   "slack": 0.2625,
+   "travel": 0.35,
+   "workspace": 0.0275
+  },
+  "gap_pp": 4.452083,
+  "distance_l1": 0.708116
+ },
+ "admissible_set": {
+  "name": "same_size_400_compositions",
+  "definition": "0 <= k_s <= n_s, sum_s k_s = 400",
+  "size": 1501380,
+  "reversing": 315610,
+  "zero_gap": 26,
+  "reversing_fraction": 0.2102,
+  "justification": "Every 400-cell frame is a composition in this set; the set is finite, so the reported distance is a discrete minimum and not an artefact of unrestricted reweighting."
+ },
+ "minimum_reversing_composition": {
+  "definition": "crossing: gap_pp >= 0",
+  "counts": {
+   "banking": 113,
+   "slack": 66,
+   "travel": 89,
+   "workspace": 132
+  },
+  "weights": {
+   "banking": 0.2825,
+   "slack": 0.165,
+   "travel": 0.2225,
+   "workspace": 0.33
+  },
+  "gap_pp": 0.010565,
+  "distance_l1": 0.10713,
+  "distance_tv": 0.053565,
+  "ties": 1
+ },
+ "minimum_tie_composition": {
+  "counts": {
+   "banking": 112,
+   "slack": 59,
+   "travel": 93,
+   "workspace": 136
+  },
+  "weights": {
+   "banking": 0.28,
+   "slack": 0.1475,
+   "travel": 0.2325,
+   "workspace": 0.34
+  },
+  "gap_pp": 0.0,
+  "distance_l1": 0.121979,
+  "distance_tv": 0.06099,
+  "ties": 1
+ },
+ "minimum_strict_reversal_composition": {
+  "counts": {
+   "banking": 113,
+   "slack": 66,
+   "travel": 89,
+   "workspace": 132
+  },
+  "weights": {
+   "banking": 0.2825,
+   "slack": 0.165,
+   "travel": 0.2225,
+   "workspace": 0.33
+  },
+  "gap_pp": 0.010565,
+  "distance_l1": 0.10713,
+  "distance_tv": 0.053565,
+  "ties": 1
+ },
+ "enumeration": {
+  "complete": true,
+  "compositions": 1501380,
+  "note": "The gap depends only on suite counts, so the suite-level rates are sufficient and the scan is exhaustive over every admissible 400-cell composition, not a local search."
+ },
+ "continuous_lower_bound": {
+  "census_gap_pp": -1.112878,
+  "donor": "workspace",
+  "receiver": "banking",
+  "mass": 0.052371,
+  "distance_l1": 0.104741,
+  "feasible": true,
+  "status": "relaxation over the full simplex; lower bound only, not an admissible frame"
+ },
+ "prefix_family": {
+  "prefixes": 629,
+  "reversing": 564,
+  "preserving": 65,
+  "largest_reversing": {
+   "n": 564,
+   "counts": {
+    "banking": 144,
+    "slack": 105,
+    "travel": 140,
+    "workspace": 175
+   },
+   "gap_pp": 0.0074,
+   "distance_l1": 0.142549,
+   "workspace_share_pct": 31.028
+  },
+  "smallest_preserving": {
+   "n": 565,
+   "counts": {
+    "banking": 144,
+    "slack": 105,
+    "travel": 140,
+    "workspace": 176
+   },
+   "gap_pp": -0.0118,
+   "distance_l1": 0.140107,
+   "workspace_share_pct": 31.15
+  },
+  "minimum_distance_over_prefixes": {
+   "n": 564,
+   "counts": {
+    "banking": 144,
+    "slack": 105,
+    "travel": 140,
+    "workspace": 175
+   },
+   "gap_pp": 0.0074,
+   "distance_l1": 0.142549,
+   "workspace_share_pct": 31.028
+  }
+ },
+ "context_frames": {
+  "user_task_weights": {
+   "weights": {
+    "banking": 0.1649,
+    "slack": 0.2165,
+    "travel": 0.2062,
+    "workspace": 0.4124
+   },
+   "gap_pp": -2.3957,
+   "distance_l1": 0.160753,
+   "reversal": false
+  },
+  "uniform_suites": {
+   "weights": {
+    "banking": 0.25,
+    "slack": 0.25,
+    "travel": 0.25,
+    "workspace": 0.25
+   },
+   "gap_pp": 0.372,
+   "distance_l1": 0.263116,
+   "reversal": true
+  },
+  "census_quota_400": {
+   "counts": {
+    "banking": 91,
+    "slack": 67,
+    "travel": 89,
+    "workspace": 153
+   },
+   "gap_pp": -1.140625,
+   "distance_l1": 0.003021,
+   "source": "EXP-02 stratified_census quotas at n=400"
+  }
+ },
+ "not_claimed": [
+  "The distance is not a probability: it does not say how likely a reversing frame is.",
+  "No causal attribution: the gap is a composition effect of this artifact only.",
+  "The simplex relaxation is not an admissible frame and is never quoted as the minimum.",
+  "No claim about other attacks or other arm pairs."
+ ]
+}
