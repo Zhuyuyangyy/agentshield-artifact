@@ -1,0 +1,45 @@
+{
+  "experiment": "held_out_instruction_generalisation",
+  "evidence_kind": "recovered",
+  "recovery_note": "The frozen detector and the frozen case lists were re-run. The aggregate file was regenerated in place and compared before this exporter ran; it was byte-identical to the committed version, so this is a recovery of the historical observation, not a new experiment. No case text, marker or threshold was changed.",
+  "case_sets": {
+    "attack": 9,
+    "benign": 6
+  },
+  "derived_counts": {
+    "attack_detected": 0,
+    "benign_false_positives": 0,
+    "entities_recovered": 5,
+    "entities_checked": 7
+  },
+  "detector": {
+    "corpus_markers_enabled": false,
+    "active_markers": [
+      "ignore previous instructions",
+      "ignore all previous",
+      "disregard previous",
+      "ignore the above",
+      "do not follow",
+      "system instruction",
+      "new instruction",
+      "instead of that",
+      "bypass",
+      "override"
+    ],
+    "marker_set_sha256": "42a46d4bdf6aacf50bb4821c79e0f86ec60922ec10d031c6e374b11e0d193a45",
+    "source_path": "backend/app/shield/artifacts.py",
+    "source_sha256": "21b17afef8c1284f0c7749cb8010d54dcabcbaded7379f13a77a7e70763e7444"
+  },
+  "producers": {
+    "benchmark/held_out_generalisation.py": "e9d62739d4c9c76c4c82c82a15c55d69c09d339821e1ffb6a92b5a3c6ba7c952",
+    "benchmark/held_out_evidence.py": "34f3a09410b04a4c795eaeade388228400e7278f375c64df9ad1e8cd8783d74c"
+  },
+  "artifacts": {
+    "benchmark/results/held_out_generalisation.json": "70872e10a28600c328e56a095aaa4d96ce4853e9633d93d8946064d262f85b21",
+    "benchmark/results/held_out_cases.jsonl": "a74d1bc614ff016921c58ca2dcd3b3e56d804e9e1591392e7b9d154cf91f51d8"
+  },
+  "environment": {
+    "python": "3.14.7",
+    "platform": "Windows"
+  }
+}

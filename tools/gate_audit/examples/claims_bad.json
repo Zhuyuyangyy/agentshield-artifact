@@ -1,0 +1,16 @@
+[
+  {
+    "claim_type": "descriptive",
+    "claim": "The gate reduces attack success to 7.5 percent",
+    "metric": "attack_trace_block_rate",
+    "value": 0.0751,
+    "tolerance": 0.0001
+  },
+  {
+    "claim_type": "descriptive",
+    "claim": "Benign trace blocking is 41.2 percent",
+    "metric": "benign_trace_block_rate",
+    "value": 0.40,
+    "tolerance": 0.001
+  }
+]

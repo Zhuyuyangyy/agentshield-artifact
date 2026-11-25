@@ -1,0 +1,756 @@
+{
+  "description": "Canonical evidence inventory for the AgentDojo live evaluation and the offline control experiments. Lists every artifact a paper or spec claim rests on, so the claim stays auditable from version control alone. This file records an index, not a measurement: it must never be read as evidence in place of the artifact it points at.",
+  "hash_encoding": "sha256 and size are over LF-normalised content (what Git stores), so a core.autocrlf=true checkout does not invalidate them",
+  "indexed_granularity": "One entry per top-level run artifact (manifest.json, index.jsonl, report.json, sidecar.jsonl, derived attribution files). Per-cell substance -- the GateEngine-*/ trajectory logs and the new sidecar/ per-cell gate artifacts -- is committed next to those files but not hashed individually here, so the index stays small enough to review; a cell's outcome is also on its index.jsonl row. Frozen directories from the 120B pair are indexed under this same rule. The one exception is the paired 120B arms' per-cell workspaces, which the latency derivation reads: they are pinned collectively by live_latency_derived.json, whose every row carries its source file's LF-normalised digest and whose source_digest_set_sha256 covers all 160 of them. Files under benchmark/results/ that are not entries here -- earlier generations of a comparison, the raw outputs of the experiment driver, and runs the paper does not report -- are enumerated under the not_indexed key, so their presence in the repository is explained rather than unexplained. None of them is shipped in the anonymous snapshot; the only file in that group the snapshot carries is this inventory.",
+  "generated_for": "USENIX Security '27 cycle 2 submission",
+  "canonical_artifacts": [
+    {
+      "path": "benchmark/results/agentdojo_live/deepseek-10x6x3/manifest.json",
+      "sha256": "47728a45b61a9bd91cbc1e0a2287736596741e76865de2885db9d67602edaf7d",
+      "size": 2971,
+      "purpose": "Frozen Phase 2 run config, task rule, threshold policy and adapter notes",
+      "claim_supported": "spec 6.1: the Phase 2 cell set and its pre-registered rules are fixed before the cells exist",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/deepseek-10x6x3/index.jsonl",
+      "sha256": "d2ca6166c7812b36c0567af058f1dfba4b6651b253a49a19be1501a74855db3c",
+      "size": 211031,
+      "purpose": "Per-cell utility/security/joint outcome for Phase 2, 694 cells",
+      "claim_supported": "spec 6.1: all 660 attack cells graded security=False, i.e. no headroom on this model",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/deepseek-10x6x3/report.json",
+      "sha256": "fac1d8bcd5e14086ad7d9ca6b48122b1d6da60f00b1dbc5bd2144cc202f9c12b",
+      "size": 12072,
+      "purpose": "Aggregated ASR / utilities / joint 2x2 / gate stats for Phase 2",
+      "claim_supported": "spec 6.1 table (ASR 0.000 both rungs, utility 0.964 / 0.782, 193 blocks) and spec 7's joint correction record",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/deepseek-10x6x3/sidecar.jsonl",
+      "sha256": "69012e901322c07c1fb3e4de9260c1b486e4799ac301eb330c30c9a7988e4428",
+      "size": 1363695,
+      "purpose": "Phase 2 gate calls: decision, signal, risk per call",
+      "claim_supported": "spec 6.1 finding 2: all 193 blocks are send_email, concentrated on user_task_25 / user_task_33",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/diagnose-deepseek-task25-33/manifest.json",
+      "sha256": "0aa324745ee9d79cbf5902afa36667161e61f2c9cfb62f5b0ae6610529576e8e",
+      "size": 2911,
+      "purpose": "Diagnosis run config",
+      "claim_supported": "spec 6.2 Step A/D: the diagnosis ran under the frozen rung with rules_changed=false",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/diagnose-deepseek-task25-33/index.jsonl",
+      "sha256": "f5ae9b6adce94b92d02c913ec2c786e8ba965b694697d88032a638d7d841e4b2",
+      "size": 1128,
+      "purpose": "Per-cell outcomes for the diagnosis leg",
+      "claim_supported": "spec 6.2 Step A/D post-hoc record",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/diagnose-deepseek-task25-33/diagnosis.json",
+      "sha256": "b4a57ab0a756cae5928dcc8602f8e41b696986657aa336fba6c3438f8c891833",
+      "size": 121795,
+      "purpose": "Per-gate-call engine decomposition plus leave-one-out counterfactuals",
+      "claim_supported": "spec 6.2 Step A/D: which signal is the necessary/sufficient cause of the 0.95 BLOCK on the two legitimate send_email tasks",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/diagnose-deepseek-task25-33/sidecar.jsonl",
+      "sha256": "4b2eb97021c196793b1f77d0f25f43406b3e1f8a5203ec2b6d8c230fea540afb",
+      "size": 44338,
+      "purpose": "Diagnosis-leg gate calls",
+      "claim_supported": "spec 6.2 Step A/D post-hoc record",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/headroom-relay-gpt55-injecagent/manifest.json",
+      "sha256": "1fb3394cfeed99c188bc4f6c45e84d7a4a36434f3bb0903dce9547291bb5a6de",
+      "size": 2989,
+      "purpose": "Relay arm config, provider facts (provider_base_url, requested_model, model_names_key=null)",
+      "claim_supported": "spec 6.2 amendment: the relay arm may not be headline tier; the attack substitution is forced by the provider catalogue",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/headroom-relay-gpt55-injecagent/index.jsonl",
+      "sha256": "5467fbbb1eae4bacea8dc093fe53afcb4b0c76bd55dde4d55f412cf0000465f0",
+      "size": 32116,
+      "purpose": "Per-cell outcomes for the relay headroom pilot",
+      "claim_supported": "spec 6.2: the relay pilot reported NOT MET and the negative is kept",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/headroom-relay-gpt55-injecagent/report.json",
+      "sha256": "66c2c4a0128f9f7ca5d5f630a07068bd900dc6359a1f8e8866f1417370e6274a",
+      "size": 7672,
+      "purpose": "Relay headroom verdict (report['headroom'])",
+      "claim_supported": "spec 6.2: pre-registered min_headroom=10 not reached on this arm",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/headroom-relay-gpt55-injecagent/sidecar.jsonl",
+      "sha256": "7abc74167f8fbdfa669a72be98aed91dd00b9dfc48a811da3f52a98da03c11d7",
+      "size": 229404,
+      "purpose": "Relay arm gate calls (passthrough under no_governance)",
+      "claim_supported": "spec 6.2: under no_governance every gate call is allow/executed",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b/manifest.json",
+      "sha256": "2c02026d79dfaeb97f78a51b66a4f58ba21233a050964d07c77b3d03a35d4f6b",
+      "size": 3115,
+      "purpose": "Local-vLLM 120B headroom arm config, pinned model/revision, parser and exact serve command",
+      "claim_supported": "spec 6.2 local-vLLM arm: the arm substitutes for the pending official Step B and is re-runnable because weights, server version, parser and command line are pinned",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b/index.jsonl",
+      "sha256": "7d5b253e4f94d6c91a1f0b56a022cd25253402ae530521dfb5a3fc9c63b165b3",
+      "size": 35090,
+      "purpose": "Per-cell outcomes, 114 cells (90 attack, 10 benign, 14 validity)",
+      "claim_supported": "spec 6.2 headroom result: security_true_cells = 16 of 90, asr = 0.178, headroom MET -- the licence for Step 9",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b/report.json",
+      "sha256": "e1a8e490c16c503e142335df9f330c068d5c8f44df0157c34b93a3e1b893b74a",
+      "size": 7573,
+      "purpose": "Headroom verdict, ungoverned utilities and joint 2x2",
+      "claim_supported": "spec 6.2: headroom_met=true and the ungoverned 61/13/3/13 joint split",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b/sidecar.jsonl",
+      "sha256": "ec368f9f79c2ee96dad843b9855264605b94352cd7ae277c2e773c017261d533",
+      "size": 14932,
+      "purpose": "Gate calls of the last invocation of the headroom arm",
+      "claim_supported": "spec 6.2: truncated per invocation, so this covers only the final attempt's cells",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b/preregistration.manifest.snapshot.json",
+      "sha256": "2627fa6753dcc9562bbe24bbd30aae498e78cb2c1e00680ecdd3534f96a9976b",
+      "size": 2954,
+      "purpose": "Verbatim snapshot of the manifest as pre-registered, before the first attack cell",
+      "claim_supported": "spec 6.2: the pre-registration record, cited because created_at is rewritten at every start",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b-v041/manifest.json",
+      "sha256": "c11d18326e7df6b1a2ad7101e35dea8aaa5e61a000b7b7a9fd77cdd9013bfad2",
+      "size": 2752,
+      "purpose": "Governed arm config; records that no no_governance attack arm lives here and min_headroom is deliberately absent",
+      "claim_supported": "spec 6.2 step 9: a separate directory is required because rungs is in CACHE_COMPARED_KEYS",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b-v041/index.jsonl",
+      "sha256": "fa2c67aecc076af03474fab7807207261d563dad0bfd828ca7a62cf40cdb28f9",
+      "size": 31327,
+      "purpose": "Per-cell outcomes, 104 cells (80 attack, 10 benign, 14 validity)",
+      "claim_supported": "spec 6.2 step 9: authority for the paired 80-cell intersection, the 0.1875 -> 0.0000 ASR margin, both utilities and the joint 2x2",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b-v041/report.json",
+      "sha256": "2e41e14a8afe3f89e53a381cf59321cfb9020ad2a48ea852aab9f0313fc12e9b",
+      "size": 6917,
+      "purpose": "Governed-arm aggregates; per_model_rung joint_outcomes.counts is the machine check on the step 9 table",
+      "claim_supported": "spec 6.2 step 9 table column B. Its gate_stats covers only 3 cells with a summary -- see the note below.",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b-v041/sidecar.jsonl",
+      "sha256": "874a6a140f45f78662bbdb0cccd6752d27560b72eb46af52cf210bfb902c9b03",
+      "size": 140436,
+      "purpose": "Gate calls of the last invocation only (3 cells with a summary)",
+      "claim_supported": "spec 6.2 step 9: insufficient on its own; superseded by attribution.json for per-cell coverage",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b-v041/attribution.json",
+      "sha256": "7ac87fbdba138e9d23092eab2d849ae604aac8c75d39297dea5d15cc60346d4b",
+      "size": 24357,
+      "purpose": "Derived per-cell blocked_calls for the 80 paired attack cells, fused from the per-invocation snapshots",
+      "claim_supported": "spec 6.2 step 9 flip/utility split: 6 of 15 security flips occurred in cells where the gate intervened, 3 have blocked_calls=0 and 6 are unmapped (57 of 80 cells mapped)",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/live_latency_derived.json",
+      "sha256": "3b59a2744b67721e41252836d8b292982a5f61670218d56978de775135f597b3",
+      "size": 87592,
+      "purpose": "Post-hoc wall-clock derivation for the 80 paired live cells: one row per cell per arm carrying the duration the run recorded in its own per-cell workspace artifact, the aggregates, and the LF-normalised digest of all 160 source files",
+      "claim_supported": "paper sec:live deployment cost: median cell wall time 63.9 s to 73.3 s (1.15x), aggregate 13,213 s to 36,948 s (2.80x), 22 of 80 governed cells beyond 600 s. Both arms predate the harness's per-cell latency_s column, so neither index.jsonl carries a timing field and this derivation is the only record of the durations. Derived after the fact from frozen per-cell execution records, not a pre-registered endpoint; the artifact says so itself (derived_post_hoc, experiment_rerun) and the paper carries the same qualifier",
+      "spec_section": "benchmark/derive_live_latency.py"
+    },
+    {
+      "path": "benchmark/results/aggregation_rule_comparison.json",
+      "sha256": "3f64cd06643ab8b12c11a7c375ff127c8875e8b16bdb420ef348b940d68bf0c4",
+      "size": 9278,
+      "purpose": "Rule-level comparison of no_relaxation, global_cap, band_split and hard_first over the twelve frozen cells plus a 600-point (H,P,tau) grid",
+      "claim_supported": "bounds the authorization-aggregation contribution: band_split differs from the pre-fix global cap on 3 of 12 cells (BLOCK to ALLOW), but is decision-equivalent to a hard-first priority rule at the block threshold (0 of 12 cells; 0 of 600 grid points at BLOCK). The only difference is REVIEW to ALLOW in 60 of 600 grid points, which has no execution effect under the evaluated log_and_allow review policy. Reported as a negative result for the defence claim, not hidden",
+      "spec_section": "benchmark/aggregation_rule_comparison.py"
+    },
+    {
+      "path": "benchmark/results/e2b_review_policy.json",
+      "sha256": "0faa84612bdd3c9e2276642579485c80f04388798f0a8cdf10fbd99c4aecc054",
+      "size": 3800,
+      "purpose": "Full-corpus re-evaluation of four aggregation rules under both review policies, with per-rule attack and benign trace-block rates and the reconstruction check",
+      "claim_supported": "bounds the aggregation contribution on the real corpus: with review blocking, band split and hard-first both block 0.0751 of attack traces, but band split blocks 0.4124 of benign traces against 0.3814 for hard-first (+3.10 pp) with no attack gain; under log_and_allow all metrics are identical. The band-split baseline reproduces the frozen full-set rates 0.03085 / 0.28866 exactly, and 2 of 13,913 steps reconstruct low (both benign ALLOW) with no effect on any count. Reported as a negative result",
+      "spec_section": "benchmark/e2b_review_policy_replay.py"
+    },
+    {
+      "path": "benchmark/results/measurement_reanalysis.json",
+      "sha256": "fae570dd5592595948a407f43adb72d99e430b1822d2cafcfd432c213ab01fb4",
+      "size": 14647,
+      "purpose": "Sampling-frame and paired-bootstrap re-analysis of the E2b per-trajectory outcomes: full population, published 400 prefix, 1,000 random 400 subsets, and rule contrasts",
+      "claim_supported": "quantifies the measurement claims: band_split minus hard_first has an attack-trace block delta of exactly 0 with CI [0,0] under both review policies, while its benign delta is +0.03093 with CI [0, 0.0722]; band_split minus global_cap has a +0.00134 attack advantage on the full population (CI [0.00067, 0.00211]) but exactly 0 on the published prefix; the prefix sits at the 0.996 percentile of random 400 subsets for no_relaxation under log_and_allow and at 0.381 for band_split under block, so prefix bias changes sign across rules. Source outcome file (4.8 MB, hash recorded here) is regenerable bulk and is not shipped",
+      "spec_section": "benchmark/measurement_reanalysis.py"
+    },
+    {
+      "path": "benchmark/results/held_out_cases.jsonl",
+      "sha256": "a74d1bc614ff016921c58ca2dcd3b3e56d804e9e1591392e7b9d154cf91f51d8",
+      "size": 5644,
+      "purpose": "One row per held-out case: case id, source set, expected label, detector answer, entity count, and SHA-256 of the input text and entity set",
+      "claim_supported": "the 0/9 and 0/6 denominators in sec:heldout are sums over these 15 rows. Input texts and destination strings are withheld by design and recoverable from the case script the evidence manifest pins",
+      "spec_section": "paper/main.tex#sec:heldout"
+    },
+    {
+      "path": "benchmark/results/held_out_evidence_manifest.json",
+      "sha256": "eb345c11902a93cc865c4c83617b24380d1c63324ff70936f8dd1374067f6a61",
+      "size": 1769,
+      "purpose": "Hash manifest for the held-out probe: detector source, case script, exporter, aggregate and per-case file, plus the active marker set and its digest",
+      "claim_supported": "sec:heldout's numbers are bound to a specific detector configuration: corpus_specific_markers_enabled=false, a 10-marker set whose digest is recorded in this file, and no change to any case text or threshold. Also records which producer hashes must be regenerated if any of them changes",
+      "spec_section": "paper/main.tex#sec:heldout"
+    },
+    {
+      "path": "benchmark/results/e2e/p1b_stage2/p1b-stage2-dev/e2e_manifest.json",
+      "sha256": "f7d5202e506cdf17dd20de57e26a47e8792c5f98c80565a9cf3382535371d627",
+      "size": 32351,
+      "purpose": "Stage-2 development set: 12 pairs x 3 attacks, the pre-registered headroom rule, the case list, and a SHA-256 per harness source (e2e_sources)",
+      "claim_supported": "paper tab:liveheadroom development row: 36 attack cells, 0 security=True, headroom NO-GO. The harness is identified by hash in e2e_sources rather than redistributed",
+      "spec_section": "paper/main.tex#app:liveproto"
+    },
+    {
+      "path": "benchmark/results/e2e/p1b_stage2/p1b-stage2-dev/verdicts.jsonl",
+      "sha256": "03f420c291363d7d728c7180d0a1d50125f4f04f1b1f3e87e3ac2d61b79a0030",
+      "size": 68924,
+      "purpose": "Per-cell verdicts for the 36 development attack cells: oracle outcome, gate-side counters, reconciliation flag",
+      "claim_supported": "the cell count and the 23/36 task successes of the development row are sums over these rows. The reached and flagged columns are read from the per-cell trajectories, which are not shipped because they embed a working injection payload",
+      "spec_section": "paper/main.tex#app:liveproto"
+    },
+    {
+      "path": "benchmark/results/e2e/p1b_stage2/p1b-stage2-confirm/e2e_manifest.json",
+      "sha256": "e804e42515f1576d8ad56445b65e4f227d6575d9ba2db0e1c158d404633dbc8f",
+      "size": 37287,
+      "purpose": "Stage-2 fresh confirmation set: 12 pairs sharing no pair with the development set, same protocol and headroom rule",
+      "claim_supported": "paper tab:liveheadroom confirmation row: the set was fully fresh and was not used for any tuning decision, so its NO-GO verdict is independent of the development set",
+      "spec_section": "paper/main.tex#app:liveproto"
+    },
+    {
+      "path": "benchmark/results/e2e/p1b_stage2/p1b-stage2-confirm/verdicts.jsonl",
+      "sha256": "05b2f878d06f9f7de2145af4a97353f50a651824f945dbbeeb86a64e6972fb42",
+      "size": 66297,
+      "purpose": "Per-cell verdicts for the 36 confirmation attack cells",
+      "claim_supported": "the cell count and the 28/36 task successes of the confirmation row are sums over these rows. Same reached/flagged caveat as the development file",
+      "spec_section": "paper/main.tex#app:liveproto"
+    },
+    {
+      "path": "benchmark/results/e2e/p2b3_benign/p2-b3-benign-r1/e2e_manifest.json",
+      "sha256": "7740dacf3eb7a64d8be64dc549692051599fa8279feb8d825c0805c4fbf8e952",
+      "size": 16566,
+      "purpose": "Benign-usability run 1: 16 cases x 2 arms, same suite/build as the headroom runs",
+      "claim_supported": "paper tab:benign: the run contributes 16 of the 32 cells per arm and records the protocol the two arms share",
+      "spec_section": "paper/main.tex#app:benign"
+    },
+    {
+      "path": "benchmark/results/e2e/p2b3_benign/p2-b3-benign-r1/verdicts.jsonl",
+      "sha256": "2d146d225a4c8a5705f3dfa2e1e77a2e515c48a82ff03730bbc39495ec887432",
+      "size": 55016,
+      "purpose": "Per-cell benign verdicts, run 1: task success, gate-side counters, blocked/executed reconciliation",
+      "claim_supported": "run 1 task success is 16/16 without governance and 12/16 under v0.4.1; the gate-counter sums behind the 263-decision sentence are over these rows and run 2",
+      "spec_section": "paper/main.tex#app:benign"
+    },
+    {
+      "path": "benchmark/results/e2e/p2b3_benign/p2-b3-benign-r2/e2e_manifest.json",
+      "sha256": "4befd218f04c78ecad7660e4cb6292f3c1112a38d25531fe764f0a4a32f7cb5f",
+      "size": 16566,
+      "purpose": "Benign-usability run 2, protocol identical to run 1",
+      "claim_supported": "paper tab:benign: the second repetition, which is why the table reports 32 cells per arm rather than 16",
+      "spec_section": "paper/main.tex#app:benign"
+    },
+    {
+      "path": "benchmark/results/e2e/p2b3_benign/p2-b3-benign-r2/verdicts.jsonl",
+      "sha256": "ce03ba52ecb5f1c3a5c14f3491c804fbf318e7e520d977b4afae0684b9728375",
+      "size": 55423,
+      "purpose": "Per-cell benign verdicts, run 2",
+      "claim_supported": "run 2 task success is 14/16 without governance and 12/16 under v0.4.1; summed with run 1 this gives the 30/32 and 24/32 of tab:benign",
+      "spec_section": "paper/main.tex#app:benign"
+    },
+    {
+      "path": "benchmark/results/e2e/p1b_stage2/reach_flags_derived.json",
+      "sha256": "6f09b1e35b384af61ea21fb4364c1357385881931352d237db05e09cbb334d16",
+      "size": 46631,
+      "purpose": "Payload-free per-cell derivation of the reached and flagged columns: case id, the two booleans, security, utility, and the SHA-256 of the trace each row was read from",
+      "claim_supported": "paper tab:liveheadroom supporting columns: dev 36/36 reached and 33/36 flagged; confirmation 36/36 and 30/36. The counts are sums over these rows, and the derivation records the exact normalization and flag regex. Source traces are not shipped because they embed a working injection payload, so this artifact is a post-hoc derivation rather than the raw evidence; --verify reproduces it where the traces exist",
+      "spec_section": "paper/main.tex#app:liveproto"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/workspace__v1.2.2__vllm-nemotron-120b/manifest.json",
+      "sha256": "2499d5a35d4b0558ae6869ce728e427b1356ab035d2ca522bf2d2aa6fc562d1f",
+      "size": 2140,
+      "purpose": "Ablation smoke workspace config (8 cells)",
+      "claim_supported": "spec 6.2: the 120B ran the same 8 cells as the 30B and produced asr 0.750 vs 0.000",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/workspace__v1.2.2__vllm-nemotron-120b/index.jsonl",
+      "sha256": "bbb92ab0b295f524711908f63992f36a4c2a04c1d931b88f5216296225a8129f",
+      "size": 2505,
+      "purpose": "Ablation smoke per-cell outcomes",
+      "claim_supported": "spec 6.2 ablation gate: 3 of 4 attack cells security=True, the licence to expand",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/workspace__v1.2.2__vllm-nemotron-120b/report.json",
+      "sha256": "844c45020a6f36c7e170cb37ffe02e300787002b98451f15079e2d3dece9c05d",
+      "size": 5507,
+      "purpose": "Ablation smoke aggregates",
+      "claim_supported": "spec 6.2 ablation gate",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/workspace__v1.2.2__vllm-nemotron-120b/sidecar.jsonl",
+      "sha256": "af6dc867007630ff2383355f10aec1af0db64746d23cf9085fe375e8216c62f4",
+      "size": 3375,
+      "purpose": "Ablation smoke gate calls",
+      "claim_supported": "spec 6.2 ablation gate",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/workspace__v1.2.2__vllm-nemotron-30b/manifest.json",
+      "sha256": "deeb7a60514a371fb1620b8374c04279a8154cf526623f1de90518b72cede2a5",
+      "size": 2130,
+      "purpose": "Ablation smoke workspace config (8 cells)",
+      "claim_supported": "spec 6.2: the 30B ran first, as required, and showed no headroom",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/workspace__v1.2.2__vllm-nemotron-30b/index.jsonl",
+      "sha256": "6685d1336634ad71a08c2d68f95e58119103256aa46998615a83ce474eea9cc7",
+      "size": 2503,
+      "purpose": "Ablation smoke per-cell outcomes",
+      "claim_supported": "spec 6.2 ablation gate: asr 0.000, security_true_cells = 0 of 4",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/workspace__v1.2.2__vllm-nemotron-30b/report.json",
+      "sha256": "03824fbf7cee5a1e52b9ddb84c637c9c59e5f6bb07af8bd03726d5d4638fb7f4",
+      "size": 5493,
+      "purpose": "Ablation smoke aggregates",
+      "claim_supported": "spec 6.2 ablation gate",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/workspace__v1.2.2__vllm-nemotron-30b/sidecar.jsonl",
+      "sha256": "d86cc7410fb683dc4c4a8596da5d77b78f96cfaf758e29884741107b309f2079",
+      "size": 10395,
+      "purpose": "Ablation smoke gate calls",
+      "claim_supported": "spec 6.2 ablation gate",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/smoke-relay-luna/manifest.json",
+      "sha256": "8dafc2863cf161de2dda9f8ef79d5c8d69eb8b88be5ceeaeed1e587bc4151308",
+      "size": 1946,
+      "purpose": "Relay smoke config",
+      "claim_supported": "spec 5: relay provider facts measured before any probe cell was paid for",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/smoke-relay-luna/index.jsonl",
+      "sha256": "ab8d56d1f3c0d03491d5bb5efe1d65893daf8879d6b33e2f286b92298580f07d",
+      "size": 311,
+      "purpose": "Relay smoke per-cell outcomes",
+      "claim_supported": "spec 5: relay wiring/smoke tier, never headline",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/smoke-relay-luna/report.json",
+      "sha256": "803ea4cc2e20afedb87776ad42c24e370feefa59460eeb2ad710f8064e74ad1b",
+      "size": 6045,
+      "purpose": "Relay smoke aggregates",
+      "claim_supported": "spec 5: relay wiring/smoke tier, never headline",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/smoke-relay-luna/sidecar.jsonl",
+      "sha256": "99c5a00e70816edb3aa22db494acdac1477edfa959e5fabcd70f70edcad4f017",
+      "size": 977,
+      "purpose": "Relay smoke gate calls",
+      "claim_supported": "spec 5: relay wiring/smoke tier, never headline",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/smoke-relay-gpt55-injecagent/manifest.json",
+      "sha256": "a29e4e8151399bcb8ae2993ba52c9f9c2725536356c5af00d019b73cdb9b77af",
+      "size": 1969,
+      "purpose": "Relay smoke config",
+      "claim_supported": "spec 5/6.2: relay warning probe (model_names_key=null, name_addressing_attacks_allowed=false)",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/smoke-relay-gpt55-injecagent/index.jsonl",
+      "sha256": "4ad63d4d739f093e7003e3a1d0090a6855d8c9968dd98c6da78bfd55ebb6af86",
+      "size": 312,
+      "purpose": "Relay smoke per-cell outcomes",
+      "claim_supported": "spec 5/6.2: relay warming probe, never headline",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/smoke-relay-gpt55-injecagent/report.json",
+      "sha256": "e103d9b5f09e583e2ba03e91af8072ee0dc61c88340d484b37d23584dfbea81d",
+      "size": 6063,
+      "purpose": "Relay smoke aggregates",
+      "claim_supported": "spec 5/6.2: relay warming probe, never headline",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/smoke-relay-gpt55-injecagent/sidecar.jsonl",
+      "sha256": "012071ea6bd85df99958b878fb0369192d9ccd1e91a4f82d0ae93bfc8a6c5b14",
+      "size": 1062,
+      "purpose": "Relay smoke gate calls",
+      "claim_supported": "spec 5/6.2: relay warming probe, never headline",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/validity-freeze-120b/manifest.json",
+      "sha256": "ee6b386a2be37987981215f560554056b49a0e559f5a72a674a0dd7b9503b2c6",
+      "size": 2716,
+      "purpose": "The single validity measurement the confirmatory replication consumes: 120B, 14 injection tasks run as user tasks under no_governance with no attack, 9 solvable",
+      "claim_supported": "spec 7 shared validity freeze: the denominator of every replication arm is a measurement made once, whose identity is this run's manifest_hash (recorded as the freeze's source_run_id)",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/validity-freeze-120b/index.jsonl",
+      "sha256": "7514df3b3d1c4a4204a8eb20cf6d78f8e159d20ff63852c13d5baf9819b0245d",
+      "size": 4981,
+      "purpose": "Per-cell outcomes of the validity measurement, 14 cells, cell_kind=validity",
+      "claim_supported": "spec 7 shared validity freeze: which 9 of the 14 injection tasks passed the suite's official utility check, and therefore which tasks are in every arm's denominator",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/validity_freeze.json",
+      "sha256": "32957e4a9dd1d6d8bf18c73306af5738d31bf45f4ed8e22289dc8b6a199de659",
+      "size": 1541,
+      "purpose": "The frozen denominator itself, carrying validity_freeze_sha256 over a canonical serialisation of its substantive fields",
+      "claim_supported": "spec 7: every replication arm must cite validity_freeze_sha256 c6ebde9c637b26a5caac866a3edea391edc6a5a443745e096db3c94c563d3886 in its manifest, and a run whose freeze is missing, edited, or measured on another suite/model/version stops before credentials are read (exit 6). The sha256 above is over this file's bytes as Git stores them; the c6eb... value is the semantic hash over the freeze's fields, which is what arms cite.",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/dryrun-freeze-A/manifest.json",
+      "sha256": "7532b06df4efe3fe7d87ced9bd9f46d0b54b790b5c0f533aeaccd8c3c621467f",
+      "size": 3003,
+      "purpose": "Un-governed arm of the pre-replication mechanism dry run (2 user tasks x 2 injection tasks); records validity_source=consumed_freeze and the consumed freeze hash",
+      "claim_supported": "spec 7: the freeze is consumed rather than re-measured, and both arms cite the identical freeze hash. This is a mechanism check, not a measurement arm -- its 4 attack cells are not part of any headline number.",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/dryrun-freeze-A/index.jsonl",
+      "sha256": "d0ccf79a66c40ad94d9924e4571df2b7fa6c32ccf130526bd5059c84eaeddef6",
+      "size": 2231,
+      "purpose": "Per-cell outcomes of dry-run arm A, 6 cells (4 attack, 2 benign, 0 validity)",
+      "claim_supported": "spec 7: the frozen denominator is in force on the un-governed side too -- cell_counts.validity is 0, and the 4 attack cells are exactly the frozen injection tasks",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/dryrun-freeze-A/report.json",
+      "sha256": "289832fc07253460104d0277ef88bb7fc8cc698a9358bc969a820605be0197bf",
+      "size": 6447,
+      "purpose": "Aggregates of dry-run arm A, including valid_injection_tasks with source=consumed_freeze",
+      "claim_supported": "spec 7: arm A and arm B report the same denominator (attempted 14 / solvable 9) and the same validity_freeze_sha256",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/dryrun-freeze-B/manifest.json",
+      "sha256": "b79e6f8ba374d1f92ad7d658ce53014aa16c297ce984eea5f07ba9949b97bc58",
+      "size": 3003,
+      "purpose": "Frozen v0_4_1 arm of the mechanism dry run, on the same cells and the same freeze as arm A",
+      "claim_supported": "spec 7: the governed arm consumes the same measurement as the un-governed arm, so the two cannot disagree about the denominator",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/dryrun-freeze-B/index.jsonl",
+      "sha256": "1be6e7a75de45a76d99c9a3d9084550b6774330797176a2cb5240bc4963f7e82",
+      "size": 2192,
+      "purpose": "Per-cell outcomes of dry-run arm B, 6 cells (4 attack, 2 benign, 0 validity)",
+      "claim_supported": "spec 7: the governed arm also runs zero validity cells, and its blocked_calls are recorded per cell on the index row (1, 1, 0, 0 on the four attack cells) rather than only in a sidecar",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/dryrun-freeze-B/report.json",
+      "sha256": "7cf9e135b0952c0706f3508ea958ed5f40a026a8d1bd36402b09b7042282cf38",
+      "size": 6631,
+      "purpose": "Aggregates of dry-run arm B",
+      "claim_supported": "spec 7: arm B's validity_source is consumed_freeze with the same hash as arm A; the denominator equality was asserted field by field before the replication was allowed to start",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/authorization_invariant_matrix/manifest.json",
+      "sha256": "36018d1b7a42d212d32bd345dcebd35a2593ec5f19e04f6773c2d98e8c5e9bc2",
+      "size": 2175,
+      "purpose": "Configuration and provenance of the authorization-invariant control experiment: pre-registration hash, harness hash, rung flag set, six shield source hashes, frozen thresholds, and the pre-fix aggregation rule's source commit/blob",
+      "claim_supported": "spec P2: the twelve-cell matrix measured a configuration identifiable from version control, and its pre-fix rule is a reconstruction whose origin is pinned rather than assumed",
+      "spec_section": "docs/superpowers/specs/2026-09-29-authorization-invariant-matrix.md"
+    },
+    {
+      "path": "benchmark/results/authorization_invariant_matrix/matrix.json",
+      "sha256": "0457fed1f070fc4112015509232c7d2b128a14e005f36d7a019fee211f22128e",
+      "size": 23160,
+      "purpose": "The twelve cells with raw risk decompositions, three policy scores, three decision labels, per-cell hypothesis outcomes and the H1-H7 verdicts",
+      "claim_supported": "spec P2 / paper 7.5: on the same recorded evidence the pre-fix single cap drops three cells out of the block band (all authorized calls whose structural peak exceeds the ceiling, the authorized bulk delete among them) while the band split keeps every structurally dangerous cell at or above the block threshold; verdict supported=true, voided=false",
+      "spec_section": "docs/superpowers/specs/2026-09-29-authorization-invariant-matrix.md"
+    },
+    {
+      "path": "benchmark/results/authorization_invariant_matrix/freeze.json",
+      "sha256": "38c90c478cd06b1eb14bdf86625a142425c6803b5d02489c95e8b263769af387",
+      "size": 285,
+      "purpose": "Identifies the frozen matrix pair by the LF-normalised SHA-256 of manifest.json and matrix.json",
+      "claim_supported": "spec P2: the manifest/matrix pair is content-addressed, so a later edit of either is visible as a hash mismatch rather than a silent rewrite",
+      "spec_section": "docs/superpowers/specs/2026-09-29-authorization-invariant-matrix.md"
+    },
+    {
+      "path": "benchmark/results/statistical_hardening/manifest.json",
+      "sha256": "51192ea69c61c814d4fbf6aaa92e6cdc1108d9e1e21f34404e9284f249342467",
+      "size": 4843,
+      "purpose": "Configuration and provenance of the P3 full-population re-analysis: pre-registration and harness hashes, the canonical-reference and estimator-reference hashes, the six shield source hashes, the rung flag set, the two populations (97+400 and 97+10439), and every estimator parameter (2000 draws, seed 12345, 20-seed list, 0.5pp criterion, 1000 resamples at seed 20260929, threshold sweep, four pairs)",
+      "claim_supported": "paper 6.6: the re-analysis measured a configuration identifiable from version control alone, and every analysis choice was fixed in the pre-registration before the artifact existed",
+      "spec_section": "docs/superpowers/specs/2026-09-29-statistical-hardening.md"
+    },
+    {
+      "path": "benchmark/results/statistical_hardening/hardening.json",
+      "sha256": "5ed16263a78a28ef5da039c6106e2b25903aa7e8abea2f11886f5a9796e0f9c6",
+      "size": 55345,
+      "purpose": "The re-analysis: per-population ladder point estimates and cluster-bootstrap intervals with per-series indicator fingerprints, prefix-vs-random percentile ranks, 20-seed endpoint stability, the threshold sweep, the paired McNemar/bootstrap comparisons, and the I1-I7 invariant record",
+      "claim_supported": "paper 6.6: the frozen prefix understates plus_entity_provenance (attack BLOCK 16.0% at percentile rank 0.003 of random 400-subsets, whose median is 21.0%) and plus_output_inspection (3.5% prefix vs 11.6% full population); the v0.4.1 and intent-slot rungs are exactly degenerate as a pair (0 discordant of 10439); the v0.4.1 attack block rate is flat across thresholds 0.80-0.95; all seven invariants hold, and the harness writes no artifact when any fails",
+      "spec_section": "docs/superpowers/specs/2026-09-29-statistical-hardening.md"
+    },
+    {
+      "path": "benchmark/results/statistical_hardening/freeze.json",
+      "sha256": "c74371f756b7f2b87db8a9c88cfa5d7e46090e4e8af926492d11f0157a35413e",
+      "size": 279,
+      "purpose": "Identifies the frozen re-analysis by the LF-normalised SHA-256 of manifest.json and hardening.json, and states the hash encoding",
+      "claim_supported": "paper 6.6: the manifest/hardening pair is content-addressed, so a later edit of either is visible as a hash mismatch rather than a silent rewrite",
+      "spec_section": "docs/superpowers/specs/2026-09-29-statistical-hardening.md"
+    },
+    {
+      "path": "benchmark/results/v0_4_trust_pareto.json",
+      "sha256": "9426456393ea4e99f6a15cf3d38b60e2537a2aff98d6143102a2b2bc7f56df5d",
+      "size": 4315,
+      "purpose": "The frozen six-rung ladder: the canonical result artifact the P3 re-analysis reproduces before reporting anything new (invariant I1), and the object of the two-command reproduction procedure",
+      "claim_supported": "paper 5 and 6.6: the committed ladder is reproduced field-for-field by both the released verifier and the re-analysis, so the re-analysis is anchored to the frozen result rather than to a restatement of it",
+      "spec_section": "docs/superpowers/specs/2026-09-29-statistical-hardening.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_native_trace_replay.json",
+      "sha256": "1247a44b5a80b25210cda98367ec2290ace9f15e042f73ac1b9fcd6f7c1a3f03",
+      "size": 5588,
+      "purpose": "Offline replay of 497 logged AgentDojo trajectories (400 attack, 97 benign) through the frozen rungs, carrying the governance-only latency distribution measured over 781 gate calls; shipped in the anonymous snapshot",
+      "claim_supported": "paper sec:latency: p50 0.47 ms, p95 5.32 ms and p99 6.96 ms over 781 calls at process_tool_call, excluding dataset loading and model time. Its confidence_intervals are also the value the re-analysis must reproduce under invariant I7 (estimator identity)",
+      "spec_section": "docs/superpowers/specs/2026-09-29-statistical-hardening.md"
+    },
+    {
+      "path": "benchmark/results/paired_trajectory_eval.json",
+      "sha256": "dfa25057bfe8b85c1ac5446f4b6148386df70ff48f80513565aed8d52bc6d2aa",
+      "size": 7472,
+      "purpose": "Paired counterfactual decisions on four identical final calls, under a source-traced and a locally-sourced condition",
+      "claim_supported": "paper sec:pairedresult and tab:paired: the four pairs agree under local-only processing and three diverge under context-aware processing, including two BLOCK-versus-ALLOW separations on identical final calls",
+      "spec_section": "paper/main.tex (sec:pairedresult)"
+    },
+    {
+      "path": "benchmark/results/leakage_invariance.json",
+      "sha256": "ccf9cf6f20f0a7fa652e9370d4fe3d4b0cd2e1fa01ec1859016541a34518d816",
+      "size": 2434,
+      "purpose": "Prediction-invariance audit over hidden grading metadata: the perturbations applied and the prediction changes observed",
+      "claim_supported": "paper sec:isolation: 3,360 metadata perturbations across seven methods produce zero prediction changes, so the reported predictors are invariant to hidden grading metadata under the tested perturbations",
+      "spec_section": "paper/main.tex (sec:isolation)"
+    },
+    {
+      "path": "benchmark/results/held_out_generalisation.json",
+      "sha256": "70872e10a28600c328e56a095aaa4d96ce4853e9633d93d8946064d262f85b21",
+      "size": 1980,
+      "purpose": "Frozen instruction detector evaluated on held-out attack and benign phrasings, with no marker or threshold change. Accompanied by held_out_cases.jsonl (15 per-case rows) and held_out_evidence_manifest.json (detector, script and artifact hashes)",
+      "claim_supported": "paper sec:heldout: the string-marker detector detects 0 of 9 hand-written attack cases, produces 0 of 6 benign false positives and recovers 5 of 7 expected destinations -- the paper's explicit negative result on detector generalization. Regenerated during the P0-B audit and found byte-identical to the committed file, so it is a recovered observation rather than a new experiment",
+      "spec_section": "paper/main.tex (sec:heldout)"
+    },
+    {
+      "path": "benchmark/results/fair_eval_report.json",
+      "sha256": "f58c460dce3ec84f73a10bc40730d40c4a1617ec2cdb0a12ea1d097a25829822",
+      "size": 8058,
+      "purpose": "Head-to-head Macro-F1 on the self-labelled SCI-600 fixture for the content-keyword baseline and the production GateEngine pipeline",
+      "claim_supported": "paper sec:sci600result: the content-keyword baseline reaches Macro-F1 0.487 and the production pipeline approximately 0.43 on a fixture the paper explicitly declines to read as generalization evidence",
+      "spec_section": "paper/main.tex (sec:sci600result)"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/workspace__v1.2.2__deepseek/manifest.json",
+      "sha256": "ed7d620aaaf38c7b894e4a1e7aa74e6adabfa71c54d48a912bc8210c3c3fd0fa",
+      "size": 2239,
+      "purpose": "Phase 1.5 run config: 2 user tasks x 2 injection tasks x 2 rungs, plus the 4 stock no-defence reference cells, identified by manifest_hash and pinned gate_source_sha256",
+      "claim_supported": "spec 5 stage 1.5: the Phase 1.5 wiring run is identifiable from version control, including the gate source it exercised",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/workspace__v1.2.2__deepseek/index.jsonl",
+      "sha256": "f571edcaffaf3a8cde2312a356bb1a6d4024196a354efbbc549895501a79742c",
+      "size": 4106,
+      "purpose": "Per-cell utility/security outcomes for Phase 1.5, 14 cells (8 attack, 4 benign, 2 validity)",
+      "claim_supported": "spec 5 stage 1.5: 'Phase 1 (1 cell) and Phase 1.5 (14 cells + 4 stock reference cells) passed' -- this is the 14",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/workspace__v1.2.2__deepseek/report.json",
+      "sha256": "a87a848962cc172b95471c0d750767a18b77903f419f3d343d87762eafc3c8aa",
+      "size": 9698,
+      "purpose": "Phase 1.5 aggregates, carrying grader_parity as well as the per-rung utilities",
+      "claim_supported": "spec 5 stage 1.5 acceptance: the run reported a measurable ASR and utility rather than failing on wiring",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/workspace__v1.2.2__deepseek/grader_parity.json",
+      "sha256": "2d2848970390152776aaf28f565e925e68ae7f96996ce436c7ed4b6286de180b",
+      "size": 2165,
+      "purpose": "The 4 stock-reference comparisons: our no_governance cells against the official stock no-defence pipeline, cell by cell",
+      "claim_supported": "spec 5 stage 1.5: 'Grader parity held: the 4 reference cells reproduced the stock no-defence pipeline's utility/security exactly (verdicts_identical_all: true); message counts differed on 2 cells, which is sampling, not a wiring difference'. This file is the only place that flag is recorded; the spec quote is verbatim from it",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/workspace__v1.2.2__deepseek/sidecar.jsonl",
+      "sha256": "b651d05663c8aa0fb4de6d6f5e26294678024298e83622c88251ae65d1264876",
+      "size": 10265,
+      "purpose": "Phase 1.5 gate calls",
+      "claim_supported": "No stage-1.5 claim rests on gate calls; it is indexed so this run triple matches the per-run granularity every other run in this inventory follows",
+      "spec_section": "docs/superpowers/specs/2026-09-26-agentdojo-live-eval-design.md"
+    }
+  ],
+  "deliberately_not_committed": [
+    {
+      "path": "benchmark/results/agentdojo_live/deepseek-10x6x3/GateEngine-*/",
+      "reason": "raw per-cell AgentDojo outputs for Phase 2; regenerable, large, not cited directly"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/diagnose-deepseek-task25-33/GateEngine-*/",
+      "reason": "raw per-cell outputs for the diagnosis leg; regenerable"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/workspace__v1.2.2__deepseek/GateEngine-*/",
+      "reason": "per-cell workspace trajectories of the Phase 1.5 rungs; regenerable, and each cell's outcome is also on the indexed index.jsonl row"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/workspace__v1.2.2__deepseek/agentdojo-no-defense-*/",
+      "reason": "per-cell workspace trajectories of the stock no-defence reference cells; the comparison that carries the claim is indexed as grader_parity.json"
+    },
+    {
+      "path": "benchmark/results/agentdojo_live/headroom-probe/",
+      "reason": "scratch probe workspace, superseded by the tracked smoke workspaces"
+    },
+    {
+      "path": ".tmp/",
+      "reason": "scratch: server logs, forwarder logs, snapshot files, probe scripts. The two entries the spec cites were copied into tracked canonical paths above; the rest is runtime debris."
+    }
+  ],
+  "known_gaps": [
+    {
+      "artifact": "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b-v041/report.json",
+      "field": "gate_stats.cells_with_summary",
+      "observed": 3,
+      "what_it_means": "The 120B governed report's gate statistics describe only the 3 cells of the run's final invocation, because the pre-per-cell sidecar was truncated at the top of every invocation and cached cells wrote no rows. The field is not wrong about what it counted; it is easy to misread as covering the arm. Per-cell coverage for the paired 80-cell comparison is in attribution.json next to it (57 of 80 mapped).",
+      "remedy_applied_for_future_runs": "one sidecar artifact per cell, keyed by cell identity, written atomically (harness change; gate_source_sha256 moved, so these directories are no longer resumable under their run-tags)"
+    },
+    {
+      "artifact": "headroom-vllm-nemotron-120b vs headroom-vllm-nemotron-120b-v041",
+      "field": "valid_injection_tasks",
+      "observed": "9 solvable in the 2026-09-27 arm, 8 in the 2026-09-29 arm; difference is injection_task_10 alone",
+      "what_it_means": "The two arms measured their own validity legs two days apart at temperature 0 and disagreed on one task, so every Step 9 number is computed on the 80-cell intersection of the two frozen sets rather than on either directory's own denominator.",
+      "remedy_applied_for_future_runs": "--validity-only writes one shared validity_freeze.json whose sha256 every arm must cite; the freeze is in CACHE_COMPARED_KEYS and a mismatch fails closed (exit 6)"
+    },
+    {
+      "artifact": "spec 6.2 step 9",
+      "field": "gate attribution coverage",
+      "observed": "57 of 80 paired attack cells",
+      "what_it_means": "6 of the 15 security flips occurred in cells where the gate actually intervened, 3 have blocked_calls=0 and 6 (all user_task_28) are unmapped. Occurrence is not proof of cause, which is the wording the spec already uses.",
+      "remedy_applied_for_future_runs": "per-cell sidecar artifacts remove the truncation, so the confirmatory replication reports attribution at full coverage"
+    },
+    {
+      "artifact": "benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b/report.json, benchmark/results/agentdojo_live/headroom-vllm-nemotron-120b-v041/report.json",
+      "field": "smoke_tier_warning and models[tier]",
+      "observed": "both reports record tier=smoke and headline_eligible=false, and carry the fixed warning that smoke-tier numbers must not appear in a paper table; the same reports record a loopback vLLM endpoint as the provider",
+      "what_it_means": "The harness derives the tier from 'is this the benchmark's reference model', not from how the model is served, and writes the relay warning unconditionally. The warning's premise -- a third-party relay a reviewer cannot verify -- does not hold for these two arms, which ran on a local vLLM instance; the tier label does hold in the sense that the model is not the reference model. The frozen reports are not rewritten. The paper's Section 7.2 footnote states this explicitly, and the numbers stay a within-setting observation rather than official benchmark performance.",
+      "remedy_applied_for_future_runs": "emit the warning only when the recorded provider endpoint is not loopback, and separate 'not the reference model' from 'served by an unverifiable relay' in the report schema"
+    },
+    {
+      "artifact": "paper Table tab:liveheadroom",
+      "field": "reached and flagged columns",
+      "observed": "both columns are read from the frozen per-cell trajectory files, not from the shipped verdicts.jsonl rows",
+      "what_it_means": "The shipped verdict rows support the cell counts, the zero security=True tally and the task-success counts, but not the 'reached' and 'flagged' columns: those require inspecting each cell's messages for the injected text and for the model's own mention of it. The trajectory files are deliberately not redistributed because they embed a working injection payload. Remedy applied: reach_flags_derived.json now ships one payload-free row per cell with the two booleans and the digest of the trace it was read from, plus a digest set over the 72 sources, so the table's two supporting columns are sums over a shipped artifact rather than a prose claim. The derivation itself can only be re-run where the traces exist, which is stated in the appendix.",
+      "remedy_applied_for_future_runs": "emit a per-cell reached/flagged boolean in the verdict row itself, so the table's supporting columns travel with the rows that are allowed to ship and no post-hoc derivation is needed"
+    }
+  ],
+  "not_indexed": [
+    {
+      "paths": [
+        "benchmark/results/EVIDENCE_MANIFEST.json"
+      ],
+      "reason": "The inventory cannot index itself. It is the only file of this group that the anonymous snapshot ships."
+    },
+    {
+      "paths": [
+        "benchmark/results/ablation_sci_report.json",
+        "benchmark/results/ablation_sci_deltas.csv",
+        "benchmark/results/ablation_sci_deltas_v2.csv",
+        "benchmark/results/ablation_sci_table.csv",
+        "benchmark/results/ablation_sci_table_v2.csv",
+        "benchmark/results/sci_baseline_report.json",
+        "benchmark/results/sci_baseline_table.md"
+      ],
+      "superseded_by": "benchmark/results/fair_eval_report.json",
+      "reason": "An earlier generation of the auxiliary SCI-600 comparison. It scores the same 600-case, three-label fixture under a different metric definition and with a different baseline naming, so the content-keyword baseline reads 0.3177 Macro-F1 here against 0.487 in the frozen report and the GateEngine rung is called 'chain-aware' where the frozen report calls it 'production'. No number in the paper rests on these files. The _v2 pair repeats the v1 pair with only the recorded dataset string changed -- one generation names the dataset through the container's workspace root, the other through the repository checkout -- and the table pair additionally differs in its runtime column, which moves with the machine. Both generations record a host-specific absolute path, so neither is shipped."
+    },
+    {
+      "paths": [
+        "benchmark/results/ablation_semireal_deltas.csv",
+        "benchmark/results/ablation_semireal_report.json",
+        "benchmark/results/ablation_semireal_table.csv",
+        "benchmark/results/semireal_ablation_report.json",
+        "benchmark/results/semireal_ablation_table.md",
+        "benchmark/results/semireal_baseline_report.json",
+        "benchmark/results/semireal_baseline_table.md"
+      ],
+      "reason": "The same driver run against a semi-real fixture of 150 cases, kept in two generations that differ only in the recorded dataset path string. The paper describes neither this fixture nor a semi-real comparison, so nothing here is quoted; the files are the derivation trail of a fixture that was not promoted into the paper."
+    },
+    {
+      "paths": [
+        "benchmark/results/paper/main_comparison.json",
+        "benchmark/results/paper/ablation.json",
+        "benchmark/results/paper/robustness.json",
+        "benchmark/results/paper/latency.json",
+        "benchmark/results/paper/review_cost.json",
+        "benchmark/results/paper/case_studies.json",
+        "benchmark/results/paper/full_paper_report.json"
+      ],
+      "reason": "The raw per-experiment outputs of the offline experiment driver, concatenated by full_paper_report.json. main_comparison.json and ablation.json restate the SCI-600 fixture and review_cost.json repeats its table under a cost model, but they are earlier snapshots of it: the production configuration reads 0.4349 Macro-F1 there against 0.4298 in the frozen report, which is why the paper quotes the frozen report and says 'approximately 0.43' instead of either number exactly. robustness.json scores four hand-built adversarial cases, latency.json is an in-process micro-benchmark over 1000 iterations with sub-millisecond percentiles, and case_studies.json walks four attack chains. The paper reports none of the three, and its latency section comes from the trace replay indexed as agentdojo_native_trace_replay.json."
+    },
+    {
+      "paths": [
+        "benchmark/results/trajectory_eval.json",
+        "benchmark/results/native_trace_eval.json",
+        "benchmark/results/live_agent_governance.json"
+      ],
+      "reason": "Runs whose endpoints the paper does not report, so no claim needs them. trajectory_eval.json is an early sweep over a 2000-sample stratified subset of the AgentDojo dump (1961 attack, 39 benign) reconstructed from attack metadata rather than recorded, and it is not the paired counterfactual comparison that paired_trajectory_eval.json indexes. native_trace_eval.json is the dump-wide version of the trace replay the paper does describe: it counts 13,574 attack steps where the indexed agentdojo_native_trace_replay.json counts the 442 in the 400 sampled trajectories, and everything else it shares with the indexed file agrees, so it is a superset rather than a contradiction. live_agent_governance.json is a governance-ladder run on a simulated backend over 8 tasks and 53 tools that measures no endpoint (asr_measured, utility_measured and task_success_measured are all false, and official_agentdojo_benchmark is false), so nothing in the paper could rest on it; it also names the model endpoint it called, which is a further reason it is not shipped."
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "experiment": "authorization_invariant_matrix",
+  "tier": "offline_control_experiment",
+  "asr_measured": false,
+  "utility_measured": false,
+  "measured_over_traffic": false,
+  "preregistration": {
+    "path": "docs/superpowers/specs/2026-09-29-authorization-invariant-matrix.md",
+    "sha256": "a13994fd6715c3c8a9e7a27bfb29c7e37b324018d0baa306c5e6ab119c858542"
+  },
+  "harness": {
+    "path": "benchmark/authorization_invariant_matrix.py",
+    "sha256": "b6b74a82033c8dcb350d58796ded41757dbb8b1b62862c7c9b49022e0e65f0b9"
+  },
+  "rung": "v0_4_1",
+  "rung_flags": {
+    "enable_trust_policy": true,
+    "use_intent_slots": true,
+    "enable_provenance": true,
+    "enable_taint_tracking": true,
+    "enable_counterfactual": true,
+    "risk_threshold": 0.7,
+    "max_branches": 5
+  },
+  "block_threshold": 0.9,
+  "review_threshold": 0.6,
+  "engine_source_sha256": {
+    "backend/app/shield/v3_engine.py": "fa5d080cf04b6d23bbabd05685e3e81793d0ed9a6fa3dc986281c81463b9428b",
+    "backend/app/shield/risk_signals.py": "b60dc59f297732bfae4c7cf462b931ace2078656a42ba7408da7f16f58751433",
+    "backend/app/shield/provenance_signals.py": "75b43c07b9b10b745601fa6f9862df9be5d3c260aec1c721736316d0c6bb3085",
+    "backend/app/shield/authorization.py": "f6b5ffaf0db2855e56a14b9941af0b0ac6e7b2e69288f9816a0b5de1c68d3d96",
+    "backend/app/shield/intent_slots.py": "f55cad792975802085b07f2b412ec180a382f4c51cced894c2582abe937e9b07",
+    "backend/app/shield/trust_policy.py": "d53ea5c8527df07be6af58f57967b576350e5d2d37b715c508e75773557f0454"
+  },
+  "global_cap_source": {
+    "commit": "<redacted-git-object>",
+    "path": "backend/app/shield/risk_signals.py",
+    "blob_sha256": "<redacted-git-object>",
+    "named_by": "<redacted-git-object> (fix: authorisation may explain provenance, not pardon structural risk)"
+  },
+  "cells": 12,
+  "policies": [
+    "no_authorization",
+    "global_cap",
+    "band_split"
+  ],
+  "notes": "global_cap is a reconstruction of the pre-fix aggregation rule applied to the engine's own recorded evidence, not a run of the pre-fix build; the pre-fix commit changed the rule and the signal set together, so running the old build would conflate them."
+}

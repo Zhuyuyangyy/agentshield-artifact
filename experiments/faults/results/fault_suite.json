@@ -1,0 +1,206 @@
+{
+ "experiment": "S02 evaluation fault suite",
+ "faults": [
+  {
+   "id": "F01",
+   "kind": "validate",
+   "description": "missing enforcement semantics",
+   "detected": true,
+   "evidence": [
+    "design.enforcement_semantics is required",
+    "design.enforcement_semantics must be one of ('log_and_allow', 'block', 'unknown')"
+   ]
+  },
+  {
+   "id": "F02",
+   "kind": "validate",
+   "description": "missing metric uncertainty",
+   "detected": true,
+   "evidence": [
+    "uncertainty.attack_trace_block_rate is required for a reported metric"
+   ]
+  },
+  {
+   "id": "F03",
+   "kind": "validate",
+   "description": "illegal aggregation rule",
+   "detected": true,
+   "evidence": [
+    "design.aggregation_rule must be one of ('no_relaxation', 'global_cap', 'band_split', 'hard_first')"
+   ]
+  },
+  {
+   "id": "F04",
+   "kind": "validate",
+   "description": "metric reported as a percentage above one",
+   "detected": true,
+   "evidence": [
+    "metrics.attack_trace_block_rate must lie in [0, 1]"
+   ]
+  },
+  {
+   "id": "F05",
+   "kind": "validate",
+   "description": "negative metric",
+   "detected": true,
+   "evidence": [
+    "metrics.benign_trace_block_rate must lie in [0, 1]"
+   ]
+  },
+  {
+   "id": "F06",
+   "kind": "validate",
+   "description": "missing provenance source",
+   "detected": true,
+   "evidence": [
+    "provenance.source must be a non-empty string"
+   ]
+  },
+  {
+   "id": "F07",
+   "kind": "validate",
+   "description": "malformed SHA-256 digest",
+   "detected": true,
+   "evidence": [
+    "provenance.sha256 must be a lowercase hex digest or null"
+   ]
+  },
+  {
+   "id": "F08",
+   "kind": "claims",
+   "description": "block rate described as attack success",
+   "detected": true,
+   "evidence": [
+    "an attack trace block rate is not an attack success rate"
+   ]
+  },
+  {
+   "id": "F09",
+   "kind": "claims",
+   "description": "claimed value outside tolerance",
+   "detected": true,
+   "evidence": [
+    "claimed 0.4 but the report has 0.4124 (tolerance 0.001)"
+   ]
+  },
+  {
+   "id": "F10",
+   "kind": "compare",
+   "description": "frame-only comparison across benchmarks",
+   "detected": true,
+   "evidence": [
+    "not_comparable",
+    "The benchmark or protocol differs; without a declared common protocol the reports are not comparable."
+   ]
+  },
+  {
+   "id": "F11",
+   "kind": "compare",
+   "description": "two design coordinates differ",
+   "detected": true,
+   "evidence": [
+    "not_comparable",
+    "More than one coordinate differs, or the changed coordinates do not form one admissible question."
+   ]
+  },
+  {
+   "id": "F12",
+   "kind": "compare",
+   "description": "no shared metric",
+   "detected": true,
+   "evidence": [
+    "not_comparable",
+    ""
+   ]
+  }
+ ],
+ "controls": [
+  {
+   "id": "N01",
+   "kind": "validate",
+   "description": "another rule",
+   "rejected": false,
+   "evidence": []
+  },
+  {
+   "id": "N02",
+   "kind": "validate",
+   "description": "another semantics",
+   "rejected": false,
+   "evidence": []
+  },
+  {
+   "id": "N03",
+   "kind": "validate",
+   "description": "different interval values",
+   "rejected": false,
+   "evidence": []
+  },
+  {
+   "id": "N04",
+   "kind": "validate",
+   "description": "all six metrics",
+   "rejected": false,
+   "evidence": []
+  },
+  {
+   "id": "N05",
+   "kind": "validate",
+   "description": "derived provenance",
+   "rejected": false,
+   "evidence": []
+  },
+  {
+   "id": "N06",
+   "kind": "claims",
+   "description": "ASR claim backed by ASR",
+   "rejected": false,
+   "evidence": [
+    {
+     "claim": "The gate reaches 12 percent attack success",
+     "claim_type": "descriptive",
+     "metric": "end_to_end_asr",
+     "value": 0.12,
+     "tolerance": 0.001,
+     "contract_valid": true,
+     "eligible_for_causal_assessment": false,
+     "causal_validity_established": false,
+     "passed": true,
+     "errors": []
+    }
+   ]
+  },
+  {
+   "id": "N07",
+   "kind": "compare",
+   "description": "same-benchmark frame comparison",
+   "rejected": false,
+   "evidence": [
+    "population",
+    "Frames differ but the mechanism is the same. Verify that both frames are subsets of one declared population."
+   ]
+  },
+  {
+   "id": "N08",
+   "kind": "compare",
+   "description": "same-frame semantics comparison",
+   "rejected": false,
+   "evidence": [
+    "design_sensitivity",
+    "The same mechanism is evaluated under a different rule or semantics; report both semantics for a gate with a REVIEW state."
+   ]
+  }
+ ],
+ "summary": {
+  "faults": 12,
+  "detected": 12,
+  "controls": 8,
+  "false_rejections": 0,
+  "originals_unchanged": true
+ },
+ "not_claimed": [
+  "Synthetic faults validate the implementation, not real-world accuracy.",
+  "The suite covers twelve fault classes and eight controls, not every possible reporting error.",
+  "No original artifact is modified; every case works on a copy."
+ ]
+}

@@ -1,0 +1,371 @@
+{
+  "experiment": "aggregation_rule_comparison",
+  "tier": "rule_level",
+  "source_matrix": "benchmark/results/authorization_invariant_matrix/matrix.json",
+  "thresholds": {
+    "block": 0.9,
+    "review": 0.6,
+    "hard_first_priority_uses": "H >= block threshold"
+  },
+  "rules": {
+    "no_relaxation": "S = max(H, P)",
+    "global_cap": "S = min(max(H, P), tau)",
+    "band_split": "S = max(H, min(P, tau))",
+    "hard_first": "BLOCK if H >= 0.90 else action(global_cap)"
+  },
+  "cells": [
+    {
+      "cell_id": "explicit__provenance_only__side_effect",
+      "auth": "explicit",
+      "risk": "provenance_only",
+      "actuation": "side_effect",
+      "engine_decision": "block",
+      "engine_risk_score": 0.95,
+      "components": {
+        "H": 0.95,
+        "P": 0.9,
+        "tau": 0.55
+      },
+      "scores": {
+        "no_relaxation": 0.95,
+        "global_cap": 0.55,
+        "band_split": 0.95
+      },
+      "actions": {
+        "no_relaxation": "BLOCK",
+        "global_cap": "ALLOW",
+        "band_split": "BLOCK",
+        "hard_first": "BLOCK"
+      },
+      "band_split_matches_engine": true
+    },
+    {
+      "cell_id": "explicit__provenance_only__read_only",
+      "auth": "explicit",
+      "risk": "provenance_only",
+      "actuation": "read_only",
+      "engine_decision": "allow",
+      "engine_risk_score": 0.285,
+      "components": {
+        "H": 0.285,
+        "P": 0.27,
+        "tau": null
+      },
+      "scores": {
+        "no_relaxation": 0.285,
+        "global_cap": 0.285,
+        "band_split": 0.285
+      },
+      "actions": {
+        "no_relaxation": "ALLOW",
+        "global_cap": "ALLOW",
+        "band_split": "ALLOW",
+        "hard_first": "ALLOW"
+      },
+      "band_split_matches_engine": true
+    },
+    {
+      "cell_id": "explicit__hard_structural__side_effect",
+      "auth": "explicit",
+      "risk": "hard_structural",
+      "actuation": "side_effect",
+      "engine_decision": "block",
+      "engine_risk_score": 0.95,
+      "components": {
+        "H": 0.95,
+        "P": 0.0,
+        "tau": 0.55
+      },
+      "scores": {
+        "no_relaxation": 0.95,
+        "global_cap": 0.55,
+        "band_split": 0.95
+      },
+      "actions": {
+        "no_relaxation": "BLOCK",
+        "global_cap": "ALLOW",
+        "band_split": "BLOCK",
+        "hard_first": "BLOCK"
+      },
+      "band_split_matches_engine": true
+    },
+    {
+      "cell_id": "explicit__hard_structural__read_only",
+      "auth": "explicit",
+      "risk": "hard_structural",
+      "actuation": "read_only",
+      "engine_decision": "block",
+      "engine_risk_score": 0.95,
+      "components": {
+        "H": 0.95,
+        "P": 0.0,
+        "tau": 0.55
+      },
+      "scores": {
+        "no_relaxation": 0.95,
+        "global_cap": 0.55,
+        "band_split": 0.95
+      },
+      "actions": {
+        "no_relaxation": "BLOCK",
+        "global_cap": "ALLOW",
+        "band_split": "BLOCK",
+        "hard_first": "BLOCK"
+      },
+      "band_split_matches_engine": true
+    },
+    {
+      "cell_id": "delegated__provenance_only__side_effect",
+      "auth": "delegated",
+      "risk": "provenance_only",
+      "actuation": "side_effect",
+      "engine_decision": "block",
+      "engine_risk_score": 0.9,
+      "components": {
+        "H": 0.9,
+        "P": 0.9,
+        "tau": null
+      },
+      "scores": {
+        "no_relaxation": 0.9,
+        "global_cap": 0.9,
+        "band_split": 0.9
+      },
+      "actions": {
+        "no_relaxation": "BLOCK",
+        "global_cap": "BLOCK",
+        "band_split": "BLOCK",
+        "hard_first": "BLOCK"
+      },
+      "band_split_matches_engine": true
+    },
+    {
+      "cell_id": "delegated__provenance_only__read_only",
+      "auth": "delegated",
+      "risk": "provenance_only",
+      "actuation": "read_only",
+      "engine_decision": "allow",
+      "engine_risk_score": 0.27,
+      "components": {
+        "H": 0.27,
+        "P": 0.27,
+        "tau": null
+      },
+      "scores": {
+        "no_relaxation": 0.27,
+        "global_cap": 0.27,
+        "band_split": 0.27
+      },
+      "actions": {
+        "no_relaxation": "ALLOW",
+        "global_cap": "ALLOW",
+        "band_split": "ALLOW",
+        "hard_first": "ALLOW"
+      },
+      "band_split_matches_engine": true
+    },
+    {
+      "cell_id": "delegated__hard_structural__side_effect",
+      "auth": "delegated",
+      "risk": "hard_structural",
+      "actuation": "side_effect",
+      "engine_decision": "block",
+      "engine_risk_score": 0.95,
+      "components": {
+        "H": 0.95,
+        "P": 0.0,
+        "tau": null
+      },
+      "scores": {
+        "no_relaxation": 0.95,
+        "global_cap": 0.95,
+        "band_split": 0.95
+      },
+      "actions": {
+        "no_relaxation": "BLOCK",
+        "global_cap": "BLOCK",
+        "band_split": "BLOCK",
+        "hard_first": "BLOCK"
+      },
+      "band_split_matches_engine": true
+    },
+    {
+      "cell_id": "delegated__hard_structural__read_only",
+      "auth": "delegated",
+      "risk": "hard_structural",
+      "actuation": "read_only",
+      "engine_decision": "block",
+      "engine_risk_score": 0.95,
+      "components": {
+        "H": 0.95,
+        "P": 0.0,
+        "tau": null
+      },
+      "scores": {
+        "no_relaxation": 0.95,
+        "global_cap": 0.95,
+        "band_split": 0.95
+      },
+      "actions": {
+        "no_relaxation": "BLOCK",
+        "global_cap": "BLOCK",
+        "band_split": "BLOCK",
+        "hard_first": "BLOCK"
+      },
+      "band_split_matches_engine": true
+    },
+    {
+      "cell_id": "none__provenance_only__side_effect",
+      "auth": "none",
+      "risk": "provenance_only",
+      "actuation": "side_effect",
+      "engine_decision": "block",
+      "engine_risk_score": 0.95,
+      "components": {
+        "H": 0.95,
+        "P": 0.9,
+        "tau": null
+      },
+      "scores": {
+        "no_relaxation": 0.95,
+        "global_cap": 0.95,
+        "band_split": 0.95
+      },
+      "actions": {
+        "no_relaxation": "BLOCK",
+        "global_cap": "BLOCK",
+        "band_split": "BLOCK",
+        "hard_first": "BLOCK"
+      },
+      "band_split_matches_engine": true
+    },
+    {
+      "cell_id": "none__provenance_only__read_only",
+      "auth": "none",
+      "risk": "provenance_only",
+      "actuation": "read_only",
+      "engine_decision": "allow",
+      "engine_risk_score": 0.285,
+      "components": {
+        "H": 0.285,
+        "P": 0.27,
+        "tau": null
+      },
+      "scores": {
+        "no_relaxation": 0.285,
+        "global_cap": 0.285,
+        "band_split": 0.285
+      },
+      "actions": {
+        "no_relaxation": "ALLOW",
+        "global_cap": "ALLOW",
+        "band_split": "ALLOW",
+        "hard_first": "ALLOW"
+      },
+      "band_split_matches_engine": true
+    },
+    {
+      "cell_id": "none__hard_structural__side_effect",
+      "auth": "none",
+      "risk": "hard_structural",
+      "actuation": "side_effect",
+      "engine_decision": "block",
+      "engine_risk_score": 0.95,
+      "components": {
+        "H": 0.95,
+        "P": 0.0,
+        "tau": null
+      },
+      "scores": {
+        "no_relaxation": 0.95,
+        "global_cap": 0.95,
+        "band_split": 0.95
+      },
+      "actions": {
+        "no_relaxation": "BLOCK",
+        "global_cap": "BLOCK",
+        "band_split": "BLOCK",
+        "hard_first": "BLOCK"
+      },
+      "band_split_matches_engine": true
+    },
+    {
+      "cell_id": "none__hard_structural__read_only",
+      "auth": "none",
+      "risk": "hard_structural",
+      "actuation": "read_only",
+      "engine_decision": "block",
+      "engine_risk_score": 0.95,
+      "components": {
+        "H": 0.95,
+        "P": 0.0,
+        "tau": null
+      },
+      "scores": {
+        "no_relaxation": 0.95,
+        "global_cap": 0.95,
+        "band_split": 0.95
+      },
+      "actions": {
+        "no_relaxation": "BLOCK",
+        "global_cap": "BLOCK",
+        "band_split": "BLOCK",
+        "hard_first": "BLOCK"
+      },
+      "band_split_matches_engine": true
+    }
+  ],
+  "cell_summary": {
+    "n_cells": 12,
+    "actions": {
+      "no_relaxation": {
+        "BLOCK": 9,
+        "ALLOW": 3
+      },
+      "global_cap": {
+        "ALLOW": 6,
+        "BLOCK": 6
+      },
+      "band_split": {
+        "BLOCK": 9,
+        "ALLOW": 3
+      },
+      "hard_first": {
+        "BLOCK": 9,
+        "ALLOW": 3
+      }
+    },
+    "band_split_matches_engine_decisions": 12,
+    "band_split_vs_hard_first_differences": [],
+    "band_split_vs_global_cap_differences": [
+      "explicit__provenance_only__side_effect",
+      "explicit__hard_structural__side_effect",
+      "explicit__hard_structural__read_only"
+    ]
+  },
+  "grid": {
+    "points": 600,
+    "band_split_vs_hard_first_action_differences": 60,
+    "band_split_vs_global_cap_action_differences": 180,
+    "band_split_vs_no_relaxation_action_differences": 108,
+    "band_split_to_global_cap_pairs": {
+      "ALLOW->ALLOW": 144,
+      "BLOCK->ALLOW": 60,
+      "BLOCK->BLOCK": 102,
+      "BLOCK->REVIEW": 60,
+      "REVIEW->ALLOW": 60,
+      "REVIEW->REVIEW": 174
+    },
+    "band_split_to_hard_first_pairs": {
+      "REVIEW->ALLOW": 60
+    },
+    "band_split_to_hard_first_examples": {
+      "REVIEW->ALLOW": {
+        "H": 0.6,
+        "P": 0.0,
+        "tau": 0.3,
+        "band_split_score": 0.6
+      }
+    }
+  }
+}

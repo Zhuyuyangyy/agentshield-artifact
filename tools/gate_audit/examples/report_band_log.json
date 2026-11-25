@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "system": "band_split",
+  "benchmark": "frozen_corpus",
+  "design": {
+    "sampling_frame": "census",
+    "frame_size": 10439,
+    "enforcement_semantics": "log_and_allow",
+    "aggregation_rule": "band_split",
+    "attribution_source": "outcome_only"
+  },
+  "metrics": {
+    "attack_trace_block_rate": 0.03085,
+    "benign_trace_block_rate": 0.28866
+  },
+  "uncertainty": {
+    "attack_trace_block_rate": {
+      "method": "paired bootstrap",
+      "unit": "trace",
+      "ci95": [0.0278, 0.0341]
+    },
+    "benign_trace_block_rate": {
+      "method": "paired bootstrap",
+      "unit": "trace",
+      "ci95": [0.1959, 0.3711]
+    }
+  },
+  "provenance": {
+    "source": "frozen replay outcomes",
+    "sha256": "46260b678f4afb21cd595ccbac02d72c08c6b780d141054f5eab62c41f1eb643",
+    "derived": false
+  }
+}

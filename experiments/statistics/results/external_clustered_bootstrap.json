@@ -1,0 +1,91 @@
+{
+ "experiment": "E01b external clustered bootstrap",
+ "focus_attack": "important_instructions",
+ "contrast": "tool_filter minus pi_detector",
+ "source": {
+  "path": "benchmark/results/external_validity_agentdojo.json",
+  "sha256": "cc316466ad3ff74e60e507932420e7a77552e8b733f00db9234ed0501668f5a7"
+ },
+ "frames": {
+  "census": {
+   "n": 629,
+   "user_clusters": 97,
+   "injection_clusters": 27,
+   "point_pp": -1.1129,
+   "cell_ci95": [
+    -3.4976,
+    1.4308
+   ],
+   "user_ci95": [
+    -4.7005,
+    2.3963
+   ],
+   "injection_ci95": [
+    -7.3383,
+    4.8215
+   ],
+   "twoway_ci95": [
+    -7.7496,
+    5.5238
+   ],
+   "cell_excludes_zero": false,
+   "user_excludes_zero": false,
+   "twoway_excludes_zero": false
+  },
+  "prefix_400": {
+   "n": 400,
+   "user_clusters": 59,
+   "injection_clusters": 27,
+   "point_pp": 4.25,
+   "cell_ci95": [
+    1.2438,
+    7.25
+   ],
+   "user_ci95": [
+    0.2544,
+    8.4746
+   ],
+   "injection_ci95": [
+    -1.134,
+    9.5009
+   ],
+   "twoway_ci95": [
+    -1.6154,
+    10.1154
+   ],
+   "cell_excludes_zero": true,
+   "user_excludes_zero": true,
+   "twoway_excludes_zero": false
+  },
+  "banking": {
+   "n": 144,
+   "user_clusters": 16,
+   "injection_clusters": 9,
+   "point_pp": 10.4167,
+   "cell_ci95": [
+    5.5556,
+    15.9722
+   ],
+   "user_ci95": [
+    2.7778,
+    18.75
+   ],
+   "injection_ci95": [
+    2.7778,
+    18.0729
+   ],
+   "twoway_ci95": [
+    -0.1239,
+    20.9573
+   ],
+   "cell_excludes_zero": true,
+   "user_excludes_zero": true,
+   "twoway_excludes_zero": false
+  }
+ },
+ "draws": 2000,
+ "not_claimed": [
+  "The intervals describe the fixed 629-cell corpus, not a super-population of tasks.",
+  "The two-way interval is normal-based CGM, not a percentile bootstrap."
+ ]
+}
